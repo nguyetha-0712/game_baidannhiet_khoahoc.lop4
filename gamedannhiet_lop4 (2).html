@@ -1,0 +1,1468 @@
+đập
+
+cat > /mnt/user-data/outputs/gamedannhiet_lop4_v2.html << 'ENDOFFILE'
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>🔥 Dẫn Nhiệt Lớp 4 – Nhà Thiết Kế Thông Thái</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800;900&family=Nunito:wght@400;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sky:#ddeeff;--sky2:#aad4f5;--sky3:#78b8e8;
+  --pink:#fde8f0;--pink2:#f9b8d0;--pink3:#e9558a;
+  --purple:#ede8fb;--purple2:#c4a8f0;--purple3:#8855dd;
+  --yellow:#fffbdd;--yellow2:#ffe97a;--yellow3:#e8a800;
+  --green:#e5f6e5;--green2:#90d090;--green3:#2d8c2d;
+  --orange:#fff0e0;--orange2:#ffb860;--orange3:#cc6600;
+  --red:#ffe5e5;--red2:#f99;--red3:#c62828;
+  --white:#fff;--text:#1a2744;--muted:#6880a0;
+  --card:#fff;--r:20px;--r2:14px;
+  --shadow:0 4px 24px rgba(20,80,180,.13);--shadow2:0 2px 10px rgba(0,0,0,.09);
+}
+html,body{height:100%;font-family:'Times New Roman',Times,serif;background:var(--sky);color:var(--text);overflow:hidden;font-size:16px}
+button{cursor:pointer;font-family:'Times New Roman',Times,serif;border:none;outline:none}
+input{font-family:'Times New Roman',Times,serif;outline:none}
+h1,h2,h3,.card-title,.hero-title,.btn,.tt-score,.timer-num,.modal-title,.blitz-q{font-family:'Times New Roman',Times,serif}
+
+/* BG */
+#scene-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bg-gradient{position:absolute;inset:0;animation:bgShift 15s ease-in-out infinite alternate}
+@keyframes bgShift{
+  0%{background:linear-gradient(150deg,#ddeeff 0%,#fde8f0 45%,#ede8fb 75%,#e5f6e5 100%)}
+  50%{background:linear-gradient(150deg,#fde8f0 0%,#ede8fb 40%,#ddeeff 70%,#fffbdd 100%)}
+  100%{background:linear-gradient(150deg,#ede8fb 0%,#ddeeff 40%,#fde8f0 70%,#e5f6e5 100%)}
+}
+.cloud{position:absolute;border-radius:60px;background:#ffffffcc;animation:cloudDrift linear infinite}
+.cloud::before{content:'';position:absolute;background:#ffffffbb;border-radius:50%;width:60%;height:150%;top:-60%;left:10%}
+.cloud::after{content:'';position:absolute;background:#ffffffbb;border-radius:50%;width:45%;height:120%;top:-40%;left:40%}
+@keyframes cloudDrift{from{transform:translateX(-200px)}to{transform:translateX(calc(100vw+200px))}}
+.sparkle{position:absolute;animation:sparkleUp linear infinite;pointer-events:none;opacity:.75}
+@keyframes sparkleUp{0%{transform:translateY(0) rotate(0);opacity:.75}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
+
+/* CONFETTI */
+#confetti{position:fixed;inset:0;z-index:999;pointer-events:none}
+.cf{position:absolute;top:-20px;animation:cfFall ease-in forwards}
+@keyframes cfFall{0%{transform:translateY(0) rotate(0) scale(1)}100%{transform:translateY(100vh) rotate(720deg) scale(.6);opacity:0}}
+.sf{position:fixed;z-index:1000;font-family:'Times New Roman',serif;font-size:1.4rem;font-weight:900;pointer-events:none;animation:sfUp .9s ease forwards}
+@keyframes sfUp{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-60px)}}
+
+/* SHELL */
+#shell{position:relative;z-index:1;width:100%;height:100vh;display:flex;flex-direction:column}
+
+/* HEADER */
+#header{background:linear-gradient(90deg,#5ba8e8,#9b7ddc,#e9558a);padding:8px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 3px 14px rgba(0,80,180,.2);flex-shrink:0;z-index:50}
+.header-logo{font-family:'Times New Roman',serif;font-size:1.1rem;font-weight:900;color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.25);white-space:nowrap;letter-spacing:.5px}
+.header-round{font-size:.82rem;font-weight:700;color:rgba(255,255,255,.9);background:rgba(255,255,255,.25);border-radius:20px;padding:4px 14px;white-space:nowrap;letter-spacing:.3px}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.timer-wrap{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.28);border-radius:20px;padding:4px 12px}
+.timer-svg{width:34px;height:34px;flex-shrink:0}
+.timer-bg{fill:none;stroke:rgba(255,255,255,.35);stroke-width:4}
+.timer-ring{fill:none;stroke:#ffe97a;stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset 1s linear,stroke .5s}
+#timer-num{font-family:'Times New Roman',serif;font-size:1.25rem;font-weight:900;color:#fff;min-width:30px;text-align:center}
+.btn-mute{background:rgba(255,255,255,.28);border-radius:50%;width:36px;height:36px;font-size:1.1rem;color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.4);transition:.2s}
+.btn-mute:hover{background:rgba(255,255,255,.5)}
+
+/* CONTENT + SIDEBAR */
+#content-row{flex:1;display:flex;overflow:hidden;min-height:0}
+#main-area{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;align-items:center;gap:12px;scroll-behavior:smooth}
+
+/* SIDEBAR — TEACHER SCORE PANEL */
+#sidebar{width:200px;flex-shrink:0;background:#fff;border-left:3px solid var(--sky2);overflow-y:auto;padding:10px 8px;display:flex;flex-direction:column;gap:8px;box-shadow:-3px 0 14px rgba(0,80,180,.09)}
+.sb-head{font-family:'Times New Roman',serif;font-size:.9rem;font-weight:900;color:#7c4dff;text-align:center;padding:4px 0 6px;border-bottom:2.5px dashed var(--purple2);letter-spacing:.5px}
+.sb-teacher-label{font-size:.72rem;font-weight:700;color:var(--muted);text-align:center;background:var(--yellow);border-radius:8px;padding:3px 6px;margin-bottom:2px}
+.team-tile{background:linear-gradient(135deg,var(--sky),var(--purple));border-radius:14px;padding:8px 9px;border:2.5px solid transparent;transition:all .3s}
+.team-tile.leader{border-color:var(--yellow3);box-shadow:0 0 16px #ffd54f66;animation:leaderGlow 2s ease-in-out infinite}
+@keyframes leaderGlow{0%,100%{box-shadow:0 0 10px #ffd54f44}50%{box-shadow:0 0 22px #ffe97a99}}
+.tt-top{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.tt-avatar{font-size:1.4rem}
+.tt-name{font-weight:800;font-size:.78rem;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'Times New Roman',serif}
+.tt-score{font-family:'Times New Roman',serif;font-weight:900;font-size:1.15rem;color:#cc6600;min-width:28px;text-align:right}
+.tt-bar-bg{height:6px;background:rgba(0,0,0,.1);border-radius:50px;overflow:hidden;margin-bottom:6px}
+.tt-bar{height:100%;border-radius:50px;transition:width .6s ease;background:linear-gradient(90deg,#5ba8e8,#9b7ddc)}
+.tt-add-row{display:flex;gap:2px;margin-bottom:2px;flex-wrap:wrap}
+.tt-sub-row{display:flex;gap:2px;flex-wrap:wrap}
+.tt-btn{flex:1;padding:4px 2px;border-radius:8px;font-size:.68rem;font-weight:900;min-width:24px;border:1.5px solid transparent;transition:.15s;cursor:pointer;font-family:'Times New Roman',serif}
+.tt-btn.add{background:#e5f6e5;border-color:var(--green2);color:#1a6e1a}
+.tt-btn.add:hover{background:var(--green2);color:#fff;transform:scale(1.07)}
+.tt-btn.sub{background:var(--red);border-color:var(--red2);color:#b01010}
+.tt-btn.sub:hover{background:var(--red2);color:#fff;transform:scale(1.07)}
+
+/* SCREENS */
+.screen{display:none;width:100%;max-width:700px;flex-direction:column;align-items:center;gap:12px;animation:screenIn .4s ease}
+.screen.active{display:flex}
+@keyframes screenIn{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+
+/* CARD */
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 22px;width:100%;position:relative}
+.card-title{font-family:'Times New Roman',serif;font-size:1.28rem;font-weight:900;text-align:center;margin-bottom:4px;color:var(--text)}
+.card-sub{font-size:.88rem;color:var(--muted);text-align:center;font-weight:600;line-height:1.5;font-family:'Times New Roman',serif}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 26px;border-radius:50px;font-family:'Times New Roman',serif;font-size:1rem;font-weight:900;transition:transform .14s,box-shadow .14s,filter .14s;box-shadow:0 5px 0 rgba(0,0,0,.15);cursor:pointer;border:none;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.2);letter-spacing:.3px}
+.btn:hover{transform:translateY(-3px) scale(1.04);filter:brightness(1.07)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.12)}
+.btn-blue{background:linear-gradient(135deg,#5ba8e8,#1a6fb5)}
+.btn-pink{background:linear-gradient(135deg,#f479a8,#c82060)}
+.btn-purple{background:linear-gradient(135deg,#bb88ee,#7033cc)}
+.btn-green{background:linear-gradient(135deg,#5dc85d,#2d8c2d)}
+.btn-yellow{background:linear-gradient(135deg,#ffe97a,#e8a800);color:var(--text)!important;text-shadow:none!important}
+.btn-orange{background:linear-gradient(135deg,#ffb860,#cc6600)}
+.btn-red{background:linear-gradient(135deg,#f99,#c62828)}
+.btn-sm{font-size:.85rem;padding:8px 18px}
+.btn-xs{font-size:.78rem;padding:6px 14px}
+
+/* START */
+.start-hero{text-align:center;padding:10px 0}
+.hero-chars{font-size:3.8rem;margin-bottom:8px;animation:heroFloat 2.5s ease-in-out infinite alternate;display:block}
+@keyframes heroFloat{0%{transform:translateY(0)}100%{transform:translateY(-14px)}}
+.hero-title{font-family:'Times New Roman',serif;font-size:1.9rem;font-weight:900;line-height:1.15;margin-bottom:8px;background:linear-gradient(135deg,#1a6fb5,#7033cc,#c82060);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:.92rem;color:var(--muted);font-weight:600;line-height:1.55;font-family:'Times New Roman',serif}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.team-row{display:flex;align-items:center;gap:8px;background:var(--sky);border-radius:12px;padding:8px 12px;border:2px solid var(--sky2)}
+.team-row .t-icon{font-size:1.5rem}
+.team-row input{flex:1;background:transparent;border:none;color:var(--text);font-weight:700;font-size:.95rem;font-family:'Times New Roman',serif}
+.team-row input::placeholder{color:var(--muted)}
+
+/* MAP */
+.map-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.map-node{background:#fff;border-radius:16px;padding:14px 10px;text-align:center;border:3px solid var(--sky2);transition:all .22s;cursor:pointer;box-shadow:var(--shadow2)}
+.map-node:hover{transform:scale(1.06);box-shadow:var(--shadow)}
+.map-node.done{border-color:var(--green3);background:var(--green)}
+.map-node.current{border-color:var(--yellow3);background:var(--yellow);animation:mapPulse 1.5s ease-in-out infinite;box-shadow:0 0 0 4px #ffe97a55}
+@keyframes mapPulse{0%,100%{box-shadow:0 0 0 4px #ffe97a44}50%{box-shadow:0 0 0 10px #ffe97a11}}
+.mn-icon{font-size:2rem;margin-bottom:6px;display:block}
+.mn-num{font-size:.72rem;color:var(--muted);font-weight:700;font-family:'Times New Roman',serif}
+.mn-name{font-family:'Times New Roman',serif;font-size:.85rem;font-weight:900;color:var(--text);line-height:1.25}
+.mn-status{font-size:.72rem;font-weight:700;margin-top:4px;font-family:'Times New Roman',serif}
+
+/* DRAG DROP R1 */
+.mat-tray{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:56px;padding:6px 0}
+.mat-chip{background:#fff;border-radius:50px;padding:8px 15px;cursor:grab;user-select:none;font-weight:800;font-size:.88rem;border:2.5px solid var(--sky2);transition:transform .2s,box-shadow .2s;display:flex;align-items:center;gap:6px;box-shadow:var(--shadow2);color:var(--text);font-family:'Times New Roman',serif}
+.mat-chip:hover{transform:scale(1.09);box-shadow:var(--shadow);border-color:#5ba8e8}
+.mat-chip.dragging{opacity:.7;transform:scale(1.12) rotate(5deg);z-index:999}
+.mat-chip.placed{opacity:.28;pointer-events:none}
+.mat-chip.selected{border-color:var(--yellow3);background:var(--yellow);box-shadow:0 0 0 3px #ffe97a55}
+.drop-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+.drop-zone{border-radius:16px;border:3px dashed var(--sky2);padding:12px;min-height:90px;transition:border .2s,background .2s;background:var(--sky)}
+.drop-zone.hover{border-color:var(--yellow3);background:var(--yellow)}
+.dz-head{font-family:'Times New Roman',serif;font-size:.95rem;font-weight:900;margin-bottom:8px;text-align:center}
+.dz-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.dz-chip{background:#fff;border-radius:20px;padding:5px 12px;font-size:.82rem;font-weight:700;display:flex;align-items:center;gap:4px;box-shadow:var(--shadow2);animation:chipPop .3s cubic-bezier(.34,1.56,.64,1);font-family:'Times New Roman',serif}
+@keyframes chipPop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* OUTFIT R2 */
+.outfit-wrap{display:flex;gap:14px;flex-wrap:wrap}
+.outfit-char{flex:0 0 145px;background:linear-gradient(160deg,var(--sky),var(--pink));border-radius:16px;padding:14px;text-align:center;border:2px solid var(--sky2)}
+.char-big{font-size:4.5rem;animation:charIdle 2s ease-in-out infinite alternate;display:block}
+@keyframes charIdle{0%{transform:scale(1)}100%{transform:scale(1.07)}}
+.char-name{font-family:'Times New Roman',serif;font-size:.88rem;font-weight:900;margin-top:4px;color:var(--text)}
+.char-status{font-size:.8rem;color:var(--muted);font-weight:700;margin-top:3px;font-family:'Times New Roman',serif}
+.warmth-lbl{font-size:.75rem;color:var(--muted);margin-top:6px;font-family:'Times New Roman',serif}
+.warmth-bg{height:10px;background:rgba(0,0,0,.1);border-radius:50px;margin-top:4px;overflow:hidden}
+.warmth-fill{height:100%;border-radius:50px;transition:width .5s,background .5s}
+.outfit-panel{flex:1;min-width:200px}
+.outfit-slot{background:var(--sky);border-radius:12px;padding:10px 12px;margin-bottom:8px;border:2px solid var(--sky2)}
+.outfit-slot-lbl{font-size:.78rem;font-weight:800;color:var(--muted);margin-bottom:6px;font-family:'Times New Roman',serif}
+.outfit-opts{display:flex;flex-wrap:wrap;gap:6px}
+.outfit-opt{background:#fff;border-radius:20px;padding:6px 12px;font-size:.82rem;font-weight:700;border:2px solid var(--sky2);cursor:pointer;transition:.15s;color:var(--text);font-family:'Times New Roman',serif}
+.outfit-opt:hover{border-color:#5ba8e8;background:var(--sky);transform:scale(1.04)}
+.outfit-opt.chosen{border-color:var(--pink3);background:var(--pink);color:#99003a}
+
+/* HEAT LAB R3 */
+.cups-wrap{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cup{background:#fff;border-radius:16px;padding:14px;text-align:center;cursor:pointer;border:3px solid var(--sky2);transition:all .22s;min-width:110px;flex:1;box-shadow:var(--shadow2)}
+.cup:hover{transform:scale(1.06);border-color:#5ba8e8}
+.cup.picked{border-color:var(--yellow3);background:var(--yellow);box-shadow:0 0 18px #ffe97a88}
+.cup-emoji{font-size:2.8rem;margin-bottom:6px;display:block}
+.cup-lbl{font-family:'Times New Roman',serif;font-size:.95rem;font-weight:900;color:var(--text)}
+.cup-mat{font-size:.78rem;color:var(--muted);font-weight:600;font-family:'Times New Roman',serif}
+.cup-temp{font-family:'Times New Roman',serif;font-size:1.2rem;font-weight:900;color:#cc6600;margin-top:4px}
+.chart-box{background:var(--sky);border-radius:14px;padding:12px;width:100%;margin-top:8px}
+.chart-lbl{font-weight:800;font-size:.85rem;color:var(--muted);margin-bottom:8px;font-family:'Times New Roman',serif}
+
+/* BLITZ R4 */
+.blitz-card{background:linear-gradient(135deg,var(--sky),var(--purple));border-radius:20px;padding:22px 18px;width:100%;text-align:center;animation:blitzIn .35s cubic-bezier(.34,1.56,.64,1);border:3px solid var(--sky2)}
+@keyframes blitzIn{0%{transform:scale(.85) translateY(16px);opacity:0}100%{transform:scale(1);opacity:1}}
+.blitz-q{font-family:'Times New Roman',serif;font-size:1.18rem;font-weight:900;margin-bottom:16px;color:var(--text);line-height:1.45}
+.blitz-row{display:flex;gap:12px;justify-content:center}
+.blitz-opt{flex:1;max-width:160px;padding:13px;border-radius:14px;font-family:'Times New Roman',serif;font-size:1.05rem;font-weight:900;border:3px solid transparent;transition:all .15s;cursor:pointer}
+.blitz-opt.true-opt{background:var(--green);border-color:var(--green3);color:#1a6e1a}
+.blitz-opt.false-opt{background:var(--pink);border-color:var(--pink3);color:#99003a}
+.blitz-opt:hover{transform:scale(1.06)}
+.blitz-opt.flash-ok{background:#90d090!important;animation:correctFlash .35s}
+.blitz-opt.flash-bad{background:var(--red2)!important;animation:shakeAnim .35s}
+@keyframes correctFlash{0%{filter:brightness(1.6)}100%{filter:brightness(1)}}
+@keyframes shakeAnim{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.combo-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#ffe97a,#e8a800);border-radius:50px;padding:5px 16px;font-family:'Times New Roman',serif;font-size:.92rem;font-weight:900;color:var(--text);animation:comboPop .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes comboPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.hint-chip{background:var(--yellow);border-radius:12px;padding:10px 14px;font-size:.88rem;font-weight:700;color:var(--text);border:2px solid var(--yellow2);margin-top:8px;font-family:'Times New Roman',serif;animation:screenIn .3s ease}
+
+/* BUZZER R5 */
+.buzzer-q{font-family:'Times New Roman',serif;font-size:1.2rem;font-weight:900;text-align:center;color:var(--text);padding:16px 12px;background:#fff;border-radius:16px;border:3px solid var(--purple2);width:100%;max-width:540px;line-height:1.5}
+.buzzer-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:480px;margin:8px 0}
+.buzzer-btn{border-radius:18px;padding:22px 10px;font-family:'Times New Roman',serif;font-size:1.1rem;font-weight:900;color:#fff;border:4px solid rgba(255,255,255,.4);transition:all .15s;text-shadow:0 1px 3px rgba(0,0,0,.2);box-shadow:0 5px 0 rgba(0,0,0,.18)}
+.buzzer-btn:hover:not(:disabled){transform:translateY(-4px) scale(1.04);filter:brightness(1.1)}
+.buzzer-btn:active:not(:disabled){transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.14)}
+.buzzer-btn:disabled{opacity:.45;cursor:default}
+.buzzer-panel{background:#fff;border-radius:16px;padding:14px;border:3px solid var(--sky2);width:100%;max-width:480px}
+.buzzer-team{font-family:'Times New Roman',serif;font-size:1.05rem;font-weight:900;color:#7033cc;margin-bottom:8px}
+.buzzer-hint{font-size:.88rem;color:var(--muted);font-weight:600;margin-bottom:6px;font-family:'Times New Roman',serif}
+.buzzer-ans{font-size:.88rem;font-weight:700;color:var(--text);white-space:pre-wrap;line-height:1.55;font-family:'Times New Roman',serif}
+.buzzer-judge{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+
+/* FINAL R6 */
+.env-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.env-card{border-radius:16px;padding:14px 10px;text-align:center;cursor:pointer;min-width:100px;flex:1;border:3px solid transparent;transition:all .2s;box-shadow:var(--shadow2)}
+.env-card:hover{transform:scale(1.07);box-shadow:var(--shadow);border-color:#9b7ddc}
+.env-big{font-size:2.6rem;display:block;margin-bottom:6px}
+.env-name{font-family:'Times New Roman',serif;font-size:.88rem;font-weight:900;color:var(--text)}
+.env-temp{font-size:.78rem;color:var(--muted);font-weight:700;margin-top:3px}
+.final-build-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.final-section{background:var(--sky);border-radius:12px;padding:10px}
+.final-sec-lbl{font-family:'Times New Roman',serif;font-size:.8rem;font-weight:900;color:var(--muted);margin-bottom:7px}
+.final-opts{display:flex;flex-wrap:wrap;gap:5px}
+.final-opt{background:#fff;border-radius:20px;padding:5px 11px;font-size:.8rem;font-weight:700;border:2px solid var(--sky2);cursor:pointer;transition:.14s;color:var(--text);font-family:'Times New Roman',serif}
+.final-opt:hover{border-color:#9b7ddc;background:var(--purple);transform:scale(1.04)}
+.final-opt.chosen{border-color:var(--pink3);background:var(--pink);color:#99003a}
+.report-box{background:var(--sky);border-radius:16px;padding:14px}
+.report-title{font-family:'Times New Roman',serif;font-weight:900;margin-bottom:10px;color:var(--text)}
+.report-row{display:flex;justify-content:space-between;font-size:.88rem;font-weight:700;padding:5px 0;border-bottom:1px dashed var(--sky2);font-family:'Times New Roman',serif}
+.report-comment{font-size:.82rem;color:var(--muted);margin-top:10px;line-height:1.6;font-family:'Times New Roman',serif}
+
+/* RESULT */
+.podium-wrap{display:flex;align-items:flex-end;justify-content:center;gap:6px;margin:12px 0;min-height:160px}
+.pod-col{display:flex;flex-direction:column;align-items:center;gap:4px}
+.pod-medal{font-size:1.8rem}
+.pod-av{font-size:2.5rem}
+.pod-name{font-family:'Times New Roman',serif;font-size:.82rem;font-weight:900;color:var(--text);text-align:center}
+.pod-sc{font-family:'Times New Roman',serif;font-size:1.1rem;font-weight:900;color:#cc6600}
+.pod-bar{border-radius:8px 8px 0 0;width:70px;display:flex;align-items:flex-start;justify-content:center;padding-top:8px;font-size:1.2rem}
+.rank-tbl{width:100%;border-collapse:collapse;font-family:'Times New Roman',serif;font-size:.88rem;margin-top:8px}
+.rank-tbl th,.rank-tbl td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--sky2)}
+.rank-tbl th{background:var(--sky);font-weight:900;color:var(--text)}
+.rank-tbl tr:last-child td{border-bottom:none}
+.title-tag{background:var(--purple);border-radius:20px;padding:3px 10px;font-size:.78rem;font-weight:900;color:#7033cc}
+
+/* MODAL */
+#modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(20,40,100,.35);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+#modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:#fff;border-radius:24px;box-shadow:0 10px 50px rgba(20,40,100,.2);padding:26px 28px;max-width:480px;width:92%;animation:modalPop .3s cubic-bezier(.34,1.56,.64,1);max-height:88vh;overflow-y:auto;border:3px solid var(--sky2)}
+@keyframes modalPop{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
+.modal-icon{font-size:3rem;display:block;text-align:center;margin-bottom:8px}
+.modal-title{font-family:'Times New Roman',serif;font-size:1.25rem;font-weight:900;text-align:center;margin-bottom:8px}
+.modal-title.ok{color:var(--green3)}
+.modal-title.bad{color:var(--red3)}
+.modal-title.hint-title{color:#7033cc}
+.modal-illus{font-size:2.2rem;text-align:center;margin:6px 0;letter-spacing:6px}
+.modal-msg{font-size:.9rem;color:var(--text);text-align:center;line-height:1.6;white-space:pre-wrap;font-family:'Times New Roman',serif;margin-bottom:4px}
+.modal-sci{background:linear-gradient(135deg,var(--green),var(--sky));border-radius:12px;padding:10px 14px;font-size:.84rem;font-weight:700;color:#1a4422;margin-top:8px;line-height:1.6;white-space:pre-wrap;font-family:'Times New Roman',serif}
+.modal-hint{background:linear-gradient(135deg,var(--yellow),var(--orange));border-radius:12px;padding:10px 14px;font-size:.84rem;font-weight:700;color:#663300;margin-top:8px;line-height:1.6;white-space:pre-wrap;font-family:'Times New Roman',serif}
+.modal-btn-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+
+/* LOADING */
+#loading{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#ddeeff,#fde8f0,#ede8fb);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s}
+.loading-title{font-family:'Times New Roman',serif;font-size:2rem;font-weight:900;color:#1a6fb5;margin-bottom:12px;text-shadow:0 2px 8px rgba(26,111,181,.2)}
+.loading-sub{font-family:'Times New Roman',serif;font-size:1rem;color:var(--muted);font-weight:700}
+.loading-emoji{font-size:4rem;animation:heroFloat 1.5s ease-in-out infinite alternate;margin-bottom:16px}
+.loading-bar{width:240px;height:8px;background:#ddd;border-radius:50px;margin-top:20px;overflow:hidden}
+.loading-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,#5ba8e8,#9b7ddc,#e9558a);animation:loadFill 2s ease forwards}
+@keyframes loadFill{0%{width:0}100%{width:100%}}
+
+/* TEAM TURN INDICATOR */
+.turn-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--yellow),var(--orange));border-radius:50px;padding:7px 20px;font-family:'Times New Roman',serif;font-size:.95rem;font-weight:900;color:var(--text);box-shadow:var(--shadow2);animation:comboPop .3s ease;margin-bottom:6px}
+
+/* RESULT NOTE */
+.teacher-note{background:linear-gradient(135deg,var(--yellow),var(--orange));border-radius:14px;padding:12px 16px;font-family:'Times New Roman',serif;font-size:.88rem;font-weight:700;color:#663300;text-align:center;border:2px solid var(--yellow3);margin:8px 0}
+</style>
+</head>
+<body>
+<div id="loading">
+  <div class="loading-emoji">🔥</div>
+  <div class="loading-title">Dẫn Nhiệt Lớp 4</div>
+  <div class="loading-sub">🧭 Nhà Thiết Kế Thông Thái – Đang tải...</div>
+  <div class="loading-bar"><div class="loading-fill"></div></div>
+</div>
+<div id="scene-bg"><div class="bg-gradient"></div></div>
+<div id="confetti"></div>
+<div id="modal-overlay"><div class="modal-box" id="modal-box">
+  <span class="modal-icon" id="m-icon">🎉</span>
+  <div class="modal-title" id="m-title"></div>
+  <div class="modal-illus" id="m-illus" style="display:none"></div>
+  <div class="modal-msg" id="m-msg"></div>
+  <div class="modal-sci" id="m-sci" style="display:none"></div>
+  <div class="modal-hint" id="m-hint" style="display:none"></div>
+  <div class="modal-btn-row" id="m-btns"></div>
+</div></div>
+
+<div id="shell">
+  <div id="header">
+    <div class="header-logo">🔥 Dẫn Nhiệt Lớp 4</div>
+    <div class="header-round" id="h-round">Chào mừng!</div>
+    <div class="header-right">
+      <div class="timer-wrap" id="timer-wrap" style="display:none">
+        <svg class="timer-svg" viewBox="0 0 34 34"><circle class="timer-bg" cx="17" cy="17" r="13"/><circle class="timer-ring" id="timer-ring" cx="17" cy="17" r="13" stroke-dasharray="81.68" stroke-dashoffset="0" transform="rotate(-90 17 17)"/></svg>
+        <div id="timer-num">60</div>
+      </div>
+      <button class="btn-mute" id="btn-mute" onclick="toggleMute()">🔊</button>
+    </div>
+  </div>
+  <div id="content-row">
+    <div id="main-area">
+      <!-- START -->
+      <div class="screen active" id="s-start">
+        <div class="card" style="max-width:560px">
+          <div class="start-hero">
+            <span class="hero-chars">🔥❄️🌊🌿⛰️</span>
+            <div class="hero-title">Nhà Thiết Kế Thông Thái<br>Giải Cứu Đoàn Thám Hiểm!</div>
+            <div class="hero-sub">🔬 Khoa học lớp 4 · Bài: <strong>Dẫn Nhiệt – Cách Nhiệt</strong><br>Thiết kế trang phục sinh tồn cho các đoàn thám hiểm!</div>
+          </div>
+          <div style="margin-top:14px">
+            <div style="font-weight:800;font-size:.88rem;color:var(--muted);margin-bottom:8px;font-family:'Times New Roman',serif">👩‍🏫 Nhập tên 4 đội:</div>
+            <div class="team-grid" id="team-grid">
+              <div class="team-row"><span class="t-icon">🌨️</span><input id="ti0" value="Đội Bắc Cực" placeholder="Tên đội 1" maxlength="16"></div>
+              <div class="team-row"><span class="t-icon">🏜️</span><input id="ti1" value="Đội Sa Mạc" placeholder="Tên đội 2" maxlength="16"></div>
+              <div class="team-row"><span class="t-icon">🌿</span><input id="ti2" value="Đội Rừng Xanh" placeholder="Tên đội 3" maxlength="16"></div>
+              <div class="team-row"><span class="t-icon">⛰️</span><input id="ti3" value="Đội Núi Tuyết" placeholder="Tên đội 4" maxlength="16"></div>
+            </div>
+          </div>
+          <div class="teacher-note" style="margin-top:14px">👩‍🏫 <strong>Giáo viên cộng điểm thủ công</strong> tại bảng điểm bên phải<br>Hệ thống chỉ hiển thị đúng/sai – không tự cộng điểm!</div>
+          <div style="margin-top:14px;display:flex;justify-content:center">
+            <button class="btn btn-blue" style="font-size:1.1rem;padding:14px 40px" onclick="G.startGame()">▶ BẮT ĐẦU HÀNH TRÌNH!</button>
+          </div>
+        </div>
+      </div>
+      <!-- MAP -->
+      <div class="screen" id="s-map">
+        <div class="card">
+          <div class="card-title">🗺️ Bản Đồ Hành Trình</div>
+          <div class="card-sub" style="margin-bottom:12px">Trái Đất đang biến động – chọn vòng để bắt đầu! 🌍</div>
+          <div class="map-wrap" id="map-wrap"></div>
+        </div>
+      </div>
+      <!-- R1 -->
+      <div class="screen" id="s-r1">
+        <div class="card" style="background:linear-gradient(135deg,var(--sky),var(--purple))">
+          <div class="card-title">⚡ Vòng 1: Thử Tài Chất Liệu</div>
+          <div class="card-sub">Phân biệt vật <strong>dẫn nhiệt tốt</strong> và <strong>dẫn nhiệt kém (cách nhiệt)</strong><br>Kéo thả hoặc nhấn vào ô phân loại! Mỗi đội thay nhau phân loại.</div>
+        </div>
+        <div class="card" id="r1-turn-card" style="padding:10px;text-align:center"></div>
+        <div class="card"><div class="mat-tray" id="r1-tray"></div></div>
+        <div class="drop-row" id="r1-zones"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <button class="btn btn-green" onclick="R1.check()">✅ Kiểm Tra Kết Quả</button>
+          <button class="btn btn-blue btn-sm" onclick="G.showMap()">🗺️ Bản đồ</button>
+        </div>
+      </div>
+      <!-- R2 -->
+      <div class="screen" id="s-r2">
+        <div class="card" style="background:linear-gradient(135deg,var(--sky),#b3e5fc)">
+          <div class="card-title">🥶 Vòng 2: Trang Phục Sinh Tồn</div>
+          <div class="card-sub" id="r2-header-sub">Chọn trang phục phù hợp với môi trường!<br>Mỗi đội có một lượt thiết kế riêng!</div>
+        </div>
+        <div class="card" id="r2-card">
+          <div class="outfit-wrap" id="outfit-wrap"></div>
+          <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap" id="r2-btns">
+            <button class="btn btn-pink" onclick="R2.test()">🧪 Thử Nghiệm!</button>
+            <button class="btn btn-blue btn-sm" onclick="G.showMap()">🗺️ Bản đồ</button>
+          </div>
+        </div>
+      </div>
+      <!-- R3 -->
+      <div class="screen" id="s-r3">
+        <div class="card" style="background:linear-gradient(135deg,var(--yellow),var(--orange))">
+          <div class="card-title">🔬 Vòng 3: Phòng Thí Nghiệm Giữ Nhiệt</div>
+          <div class="card-sub">Cốc nước nóng <strong>90°C</strong> · Dự đoán cốc nào giữ nhiệt lâu nhất!<br>Tất cả đội cùng đoán, xem mô phỏng nhiệt độ giảm dần.</div>
+        </div>
+        <div class="card">
+          <div class="cups-wrap" id="cups-wrap"></div>
+          <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-orange" id="r3-run-btn" onclick="R3.run()">▶ Chạy Mô Phỏng</button>
+            <button class="btn btn-blue btn-sm" onclick="G.showMap()">🗺️ Bản đồ</button>
+          </div>
+          <div class="chart-box" id="r3-chart" style="display:none">
+            <div class="chart-lbl">📉 Nhiệt độ giảm dần theo thời gian:</div>
+            <canvas id="heat-canvas" style="width:100%;height:130px;display:block"></canvas>
+          </div>
+          <div id="r3-sci" style="display:none;margin-top:10px" class="modal-sci"></div>
+        </div>
+      </div>
+      <!-- R4 -->
+      <div class="screen" id="s-r4">
+        <div class="card" style="background:linear-gradient(135deg,var(--pink),var(--purple))">
+          <div class="card-title">⚡ Vòng 4: Thử Thách 60 Giây!</div>
+          <div class="card-sub" id="r4-sub">Đúng hay Sai? Trả lời thật nhanh! Chuỗi đúng liên tiếp = bonus!</div>
+        </div>
+        <div id="r4-combo-area" style="min-height:32px;display:flex;justify-content:center;align-items:center"></div>
+        <div id="r4-q-area" style="width:100%;max-width:500px"></div>
+        <div id="r4-hint-area" style="width:100%;max-width:500px"></div>
+        <div id="r4-score-live" style="font-family:'Times New Roman',serif;font-size:1rem;font-weight:900;color:#cc6600;text-align:center"></div>
+        <button class="btn btn-blue btn-sm" onclick="G.showMap()">🗺️ Bản đồ</button>
+      </div>
+      <!-- R5 -->
+      <div class="screen" id="s-r5">
+        <div class="card" style="background:linear-gradient(135deg,var(--green),var(--sky))">
+          <div class="card-title">🔔 Vòng 5: Đối Kháng Khoa Học!</div>
+          <div class="card-sub">Đội nào bấm chuông trước → được quyền trả lời · Giáo viên tự cộng điểm!</div>
+        </div>
+        <div class="buzzer-q" id="r5-q">Đang chuẩn bị câu hỏi...</div>
+        <div class="buzzer-grid" id="r5-buzzers"></div>
+        <div id="r5-panel" class="buzzer-panel" style="display:none">
+          <div class="buzzer-team" id="r5-bteam"></div>
+          <div class="buzzer-hint" id="r5-bhint"></div>
+          <div class="buzzer-ans" id="r5-bans"></div>
+          <div class="buzzer-judge" id="r5-bjudge"></div>
+        </div>
+        <button class="btn btn-blue btn-sm" onclick="G.showMap()">🗺️ Bản đồ</button>
+      </div>
+      <!-- R6 -->
+      <div class="screen" id="s-r6">
+        <div class="card" style="background:linear-gradient(135deg,var(--yellow),var(--pink))">
+          <div class="card-title">🏆 Vòng 6: Siêu Nhà Thiết Kế!</div>
+          <div class="card-sub" id="r6-sub">Mỗi đội chọn môi trường → thiết kế trang phục sinh tồn hoàn hảo!<br>Giáo viên chấm điểm và tự bấm cộng điểm!</div>
+        </div>
+        <div class="card" id="r6-content"></div>
+        <button class="btn btn-blue btn-sm" onclick="G.showMap()">🗺️ Bản đồ</button>
+      </div>
+      <!-- RESULT -->
+      <div class="screen" id="s-result">
+        <div class="card" style="text-align:center">
+          <div style="font-size:3.8rem;animation:heroFloat 2s ease-in-out infinite alternate;display:inline-block">🏆</div>
+          <div class="card-title" style="font-size:1.7rem;background:linear-gradient(135deg,#1a6fb5,#c82060);-webkit-background-clip:text;-webkit-text-fill-color:transparent">KẾT QUẢ CUỐI GAME!</div>
+          <div class="card-sub" style="margin-bottom:14px">Hành trình thám hiểm hoàn thành! 🎉</div>
+          <div class="teacher-note">👩‍🏫 Điểm hiển thị là điểm giáo viên đã cộng trong suốt game</div>
+          <div class="podium-wrap" id="res-podium"></div>
+          <table class="rank-tbl" id="res-table"></table>
+          <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-blue" onclick="G.restart()">🔄 Chơi Lại</button>
+            <button class="btn btn-pink" onclick="G.showMap()">🗺️ Bản đồ</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- main-area -->
+
+    <!-- SIDEBAR – TEACHER SCORE PANEL -->
+    <div id="sidebar">
+      <div class="sb-head">🏅 Bảng Điểm</div>
+      <div class="sb-teacher-label">👩‍🏫 Giáo viên tự cộng điểm</div>
+      <div id="sb-body"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+/* ===== AUDIO ===== */
+let _ac=null,_muted=false;
+function ac(){if(!_ac)_ac=new(window.AudioContext||window.webkitAudioContext)();return _ac;}
+function beep(f,d,t='sine',v=.22){if(_muted)return;try{const c=ac(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d);o.start();o.stop(c.currentTime+d);}catch(e){}}
+function sndOk(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>beep(f,.2,'triangle',.18),i*70));}
+function sndBad(){beep(200,.35,'sawtooth',.18);setTimeout(()=>beep(160,.35,'sawtooth',.13),200);}
+function sndPop(){beep(600,.1,'sine',.13);}
+function sndCoin(){[660,880,1100].forEach((f,i)=>setTimeout(()=>beep(f,.15,'triangle',.18),i*60));}
+function sndBuzz(){[300,300,450].forEach((f,i)=>setTimeout(()=>beep(f,.22,'square',.28),i*110));}
+function toggleMute(){_muted=!_muted;document.getElementById('btn-mute').textContent=_muted?'🔇':'🔊';}
+
+/* ===== ANIMATED BG ===== */
+(()=>{
+  const bg=document.getElementById('scene-bg');
+  for(let i=0;i<4;i++){
+    const c=document.createElement('div');c.className='cloud';
+    const w=90+i*35,h=26+i*8;
+    c.style.cssText=`width:${w}px;height:${h}px;top:${5+i*14}%;left:${-w}px;animation-duration:${24+i*10}s;animation-delay:${-i*7}s`;
+    bg.appendChild(c);
+  }
+  const emojis=['✨','⭐','🌟','💫','❄️','🌸','🔥'];
+  for(let i=0;i<10;i++){
+    const s=document.createElement('div');s.className='sparkle';
+    s.textContent=emojis[i%emojis.length];
+    s.style.cssText=`left:${Math.random()*100}%;top:${100+Math.random()*10}%;animation-duration:${9+Math.random()*12}s;animation-delay:${-Math.random()*12}s;font-size:${.65+Math.random()*.55}rem`;
+    bg.appendChild(s);
+  }
+})();
+
+/* ===== CONFETTI ===== */
+function confetti(n=24){
+  const c=document.getElementById('confetti');
+  const cols=['#5ba8e8','#f479a8','#bb88ee','#5dc85d','#ffe97a','#ffb860','#f06292'];
+  for(let i=0;i<n;i++){
+    const p=document.createElement('div');p.className='cf';
+    p.style.cssText=`left:${Math.random()*100}vw;width:${7+Math.random()*9}px;height:${7+Math.random()*9}px;background:${cols[~~(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'3px'};animation-duration:${1.7+Math.random()*2}s;animation-delay:${Math.random()*.5}s`;
+    c.appendChild(p);p.addEventListener('animationend',()=>p.remove());
+  }
+}
+
+/* ===== SCORE FLOAT ===== */
+function scoreFloat(txt,col){
+  const el=document.createElement('div');el.className='sf';el.textContent=txt;
+  el.style.cssText=`color:${col};left:${25+Math.random()*50}%;top:140px;`;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),1200);
+}
+
+/* ===== TIMER ===== */
+let _tv=60,_tm=60,_tiv=null,_tcb=null;
+const TW=document.getElementById('timer-wrap');
+const TN=document.getElementById('timer-num');
+const TR=document.getElementById('timer-ring');
+function timerStart(sec,cb){
+  timerStop();_tv=sec;_tm=sec;_tcb=cb;
+  TW.style.display='flex';timerDraw();
+  _tiv=setInterval(()=>{_tv=Math.max(0,_tv-1);timerDraw();if(_tv<=0){timerStop();if(_tcb)_tcb();}},1000);
+}
+function timerStop(){clearInterval(_tiv);_tiv=null;}
+function timerDraw(){
+  TN.textContent=_tv;
+  const off=81.68*(1-_tv/_tm);
+  TR.style.strokeDashoffset=off;
+  TR.style.stroke=_tv<=10?'#f48fb1':_tv<=20?'#ffe97a':'#ffffff';
+}
+
+/* ===== MODAL ===== */
+function modal({icon='🎉',title='',titleClass='ok',illus='',msg='',sci='',hint='',btns=[],autoClose=0}){
+  document.getElementById('m-icon').textContent=icon;
+  document.getElementById('m-title').textContent=title;
+  document.getElementById('m-title').className='modal-title '+titleClass;
+  const il=document.getElementById('m-illus');il.textContent=illus;il.style.display=illus?'block':'none';
+  document.getElementById('m-msg').textContent=msg;
+  const sc=document.getElementById('m-sci');sc.textContent=sci;sc.style.display=sci?'block':'none';
+  const hn=document.getElementById('m-hint');hn.textContent=hint;hn.style.display=hint?'block':'none';
+  const br=document.getElementById('m-btns');br.innerHTML='';
+  btns.forEach(b=>{
+    const el=document.createElement('button');el.className='btn '+b.cls;el.textContent=b.text;
+    el.onclick=()=>{document.getElementById('modal-overlay').classList.remove('open');if(b.cb)b.cb();};
+    br.appendChild(el);
+  });
+  document.getElementById('modal-overlay').classList.add('open');
+  if(autoClose>0)setTimeout(()=>document.getElementById('modal-overlay').classList.remove('open'),autoClose);
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('open');}
+
+/* ===== UTILS ===== */
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=~~(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ===== GAME STATE ===== */
+const TEAM_AVS=['🌨️','🏜️','🌿','⛰️'];
+const TEAM_COLORS=['#b3e5fc','#ffcc80','#a5d6a7','#ce93d8'];
+
+const G={
+  teams:[],
+  roundsDone:[false,false,false,false,false,false],
+  currentRound:0,
+
+  startGame(){
+    this.teams=[];
+    for(let i=0;i<4;i++){
+      const n=document.getElementById('ti'+i).value.trim()||['Đội Bắc Cực','Đội Sa Mạc','Đội Rừng Xanh','Đội Núi Tuyết'][i];
+      this.teams.push({name:n,score:0,avatar:TEAM_AVS[i]});
+    }
+    this.roundsDone=[false,false,false,false,false,false];
+    this.currentRound=0;
+    TW.style.display='flex';
+    this.renderSidebar();
+    this.showMap();
+  },
+
+  renderSidebar(){
+    const max=Math.max(...this.teams.map(t=>t.score),1);
+    const topScore=Math.max(...this.teams.map(t=>t.score));
+    document.getElementById('sb-body').innerHTML=this.teams.map((t,i)=>{
+      const isLead=t.score>0&&t.score===topScore;
+      return`<div class="team-tile${isLead?' leader':''}" id="tt${i}">
+        <div class="tt-top">
+          <div class="tt-avatar">${t.avatar}</div>
+          <div class="tt-name">${t.name}</div>
+          <div class="tt-score" id="tts${i}">${t.score}</div>
+        </div>
+        <div class="tt-bar-bg"><div class="tt-bar" id="ttb${i}" style="width:${(t.score/max*100)||0}%"></div></div>
+        <div class="tt-add-row">
+          <button class="tt-btn add" onclick="G.addScore(${i},1)">+1</button>
+          <button class="tt-btn add" onclick="G.addScore(${i},5)">+5</button>
+          <button class="tt-btn add" onclick="G.addScore(${i},10)">+10</button>
+          <button class="tt-btn add" onclick="G.addScore(${i},20)">+20</button>
+          <button class="tt-btn add" onclick="G.addScore(${i},50)">+50</button>
+        </div>
+        <div class="tt-sub-row">
+          <button class="tt-btn sub" onclick="G.addScore(${i},-1)">-1</button>
+          <button class="tt-btn sub" onclick="G.addScore(${i},-5)">-5</button>
+          <button class="tt-btn sub" onclick="G.addScore(${i},-10)">-10</button>
+        </div>
+      </div>`;
+    }).join('');
+  },
+
+  addScore(ti,pts){
+    this.teams[ti].score=Math.max(0,this.teams[ti].score+pts);
+    this.renderSidebar();
+    scoreFloat((pts>0?'+':'')+pts,pts>0?'#2d8c2d':'#c62828');
+    if(pts>0){sndCoin();}else{sndBad();}
+  },
+
+  showScreen(id){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    const scr=document.getElementById(id);
+    if(scr){scr.classList.add('active');}
+    document.getElementById('main-area').scrollTo(0,0);
+  },
+
+  showMap(){
+    timerStop();
+    this.showScreen('s-map');
+    document.getElementById('h-round').textContent='🗺️ Bản Đồ Hành Trình';
+    const RMAP=[
+      {icon:'⚡',name:'Thử Tài Chất Liệu',sub:'Phân loại dẫn/cách nhiệt'},
+      {icon:'🥶',name:'Trang Phục Sinh Tồn',sub:'Chọn đồ theo môi trường'},
+      {icon:'🔬',name:'Phòng Thí Nghiệm',sub:'Dự đoán giữ nhiệt'},
+      {icon:'⚡',name:'Thử Thách 60s',sub:'Đúng/Sai tốc độ'},
+      {icon:'🔔',name:'Đối Kháng KH',sub:'Bấm chuông tranh điểm'},
+      {icon:'🏆',name:'Siêu Nhà Thiết Kế',sub:'Chung kết thiết kế'},
+    ];
+    const w=document.getElementById('map-wrap');w.innerHTML='';
+    RMAP.forEach((r,i)=>{
+      const done=this.roundsDone[i],isNext=!done&&i===this.currentRound;
+      const d=document.createElement('div');
+      d.className='map-node'+(done?' done':isNext?' current':'');
+      d.innerHTML=`<span class="mn-icon">${done?'✅':r.icon}</span><div class="mn-num">Vòng ${i+1}</div><div class="mn-name">${r.name}</div><div class="mn-status" style="color:${done?'#2d8c2d':'#e8a800'}">${done?'✔ Hoàn thành!':'▶ Vào chơi'}</div>`;
+      d.onclick=()=>this.enterRound(i);
+      w.appendChild(d);
+    });
+  },
+
+  enterRound(i){
+    this.currentRound=i;
+    if(i===0)R1.init();
+    else if(i===1)R2.init();
+    else if(i===2)R3.init();
+    else if(i===3)R4.init();
+    else if(i===4)R5.init();
+    else if(i===5)R6.init();
+  },
+
+  completeRound(i){
+    this.roundsDone[i]=true;
+    if(i<5)this.currentRound=i+1;
+    this.renderSidebar();
+    setTimeout(()=>this.showMap(),300);
+  },
+
+  showResult(){
+    timerStop();
+    this.showScreen('s-result');
+    document.getElementById('h-round').textContent='🏆 Kết Quả';
+    const sorted=[...this.teams].map((t,idx)=>({...t,orig:idx})).sort((a,b)=>b.score-a.score);
+    const medals=['🥇','🥈','🥉','🎖️'],heights=[120,90,70,50];
+    const barCols=['#ffd54f','#c0c0c0','#cd7f32','#aad4f5'];
+    const titles=['🏆 Nhà Thiết Kế Thông Thái','⭐ Chuyên Gia Dẫn Nhiệt','🔬 Nhà Khoa Học Nhí','🌱 Nhà Thám Hiểm Nhí'];
+    const pod=document.getElementById('res-podium');pod.innerHTML='';
+    [1,0,2,3].forEach(ri=>{
+      const t=sorted[ri];if(!t)return;
+      const c=document.createElement('div');c.className='pod-col';
+      c.innerHTML=`<div class="pod-medal">${medals[ri]}</div><div class="pod-av">${t.avatar}</div><div class="pod-name">${t.name}</div><div class="pod-sc">${t.score}đ</div><div class="pod-bar" style="height:${heights[ri]||40}px;background:${barCols[ri]||'#aad4f5'}">${medals[ri]}</div>`;
+      pod.appendChild(c);
+    });
+    document.getElementById('res-table').innerHTML=
+      `<tr><th>Hạng</th><th>Đội</th><th>Điểm</th><th>Danh hiệu</th></tr>`+
+      sorted.map((t,i)=>`<tr><td>${medals[i]||'🎖️'}</td><td>${t.avatar} ${t.name}</td><td style="font-family:'Times New Roman',serif;font-weight:900;color:#cc6600">${t.score}</td><td><span class="title-tag">${titles[i]||'Thám Hiểm Nhí'}</span></td></tr>`).join('');
+    confetti(60);sndOk();
+  },
+
+  restart(){
+    this.teams.forEach(t=>{t.score=0;});
+    this.roundsDone=[false,false,false,false,false,false];
+    this.currentRound=0;
+    this.renderSidebar();
+    this.showMap();
+  }
+};
+
+/* ===================================================
+   DATA
+   =================================================== */
+
+/* ROUND 1 — Extended materials (28 items) */
+const MATS=[
+  {name:'Len',emoji:'🧶',g:'bad',sci:'Len có nhiều lỗ khí nhỏ giữa các sợi → không khí bị giữ lại → cách nhiệt tốt.'},
+  {name:'Bông',emoji:'🌸',g:'bad',sci:'Bông rất xốp, giữ nhiều không khí → cách nhiệt tốt, dùng làm áo ấm.'},
+  {name:'Xốp',emoji:'🟡',g:'bad',sci:'Xốp có vô số bong bóng không khí li ti → cách nhiệt cực tốt.'},
+  {name:'Nhựa',emoji:'🪣',g:'bad',sci:'Nhựa dẫn nhiệt kém → dùng làm cán nồi, vỏ phích nước.'},
+  {name:'Kim loại',emoji:'🔩',g:'good',sci:'Kim loại có nhiều electron tự do → dẫn nhiệt rất nhanh, dễ nóng/lạnh.'},
+  {name:'Đồng',emoji:'🥉',g:'good',sci:'Đồng là kim loại dẫn nhiệt tốt nhất → dùng làm đáy nồi cao cấp.'},
+  {name:'Nhôm',emoji:'🔧',g:'good',sci:'Nhôm dẫn nhiệt tốt, nhẹ → phổ biến làm xoong nồi, tản nhiệt.'},
+  {name:'Gỗ',emoji:'🪵',g:'bad',sci:'Gỗ có nhiều lỗ hổng chứa không khí → dẫn nhiệt kém → làm cán nồi.'},
+  {name:'Sắt',emoji:'⚙️',g:'good',sci:'Sắt là kim loại dẫn nhiệt tốt → nóng nhanh khi tiếp xúc nhiệt.'},
+  {name:'Thủy tinh',emoji:'🪟',g:'bad',sci:'Thủy tinh dẫn nhiệt kém hơn kim loại → dùng làm cửa sổ giữ nhiệt.'},
+  {name:'Cao su',emoji:'🔵',g:'bad',sci:'Cao su cách nhiệt và cách điện tốt → dùng làm găng tay bảo hộ.'},
+  {name:'Da',emoji:'🟤',g:'bad',sci:'Da dẫn nhiệt kém → làm giày, áo jacket giúp giữ ấm.'},
+  {name:'Vải lanh',emoji:'🌿',g:'bad',sci:'Vải lanh mỏng và thoáng → dẫn nhiệt kém, giúp thoát nhiệt tốt khi nóng.'},
+  {name:'Bạc',emoji:'🥈',g:'good',sci:'Bạc là kim loại dẫn nhiệt tốt nhất trong các kim loại thông thường.'},
+  {name:'Giấy',emoji:'📄',g:'bad',sci:'Giấy có nhiều sợi xốp, dẫn nhiệt kém → cách nhiệt tốt.'},
+  {name:'Cát',emoji:'🏖️',g:'bad',sci:'Cát dẫn nhiệt kém, giữ nhiệt lâu → sa mạc nóng ban ngày, lạnh ban đêm.'},
+  {name:'Nước',emoji:'💧',g:'bad',sci:'Nước dẫn nhiệt kém hơn kim loại nhiều lần → phích nước dùng nước cách nhiệt.'},
+  {name:'Không khí',emoji:'💨',g:'bad',sci:'Không khí là chất cách nhiệt tốt → lý do áo len, xốp, bông đều ấm.'},
+  {name:'Thép',emoji:'🔨',g:'good',sci:'Thép (hợp kim sắt) dẫn nhiệt tốt → làm nồi, xoong, dụng cụ nấu ăn.'},
+  {name:'Titan',emoji:'⚗️',g:'good',sci:'Titan là kim loại dẫn nhiệt tốt, nhẹ và bền → dùng trong hàng không.'},
+  {name:'Lông vũ',emoji:'🪶',g:'bad',sci:'Lông vũ rất xốp, giữ không khí tốt → áo phao lông vũ ấm nhất.'},
+  {name:'Sáp',emoji:'🕯️',g:'bad',sci:'Sáp dẫn nhiệt kém → nến cháy chậm và đều do sáp cách nhiệt.'},
+  {name:'Đất sét',emoji:'🫙',g:'bad',sci:'Đất sét dẫn nhiệt kém → ấm đất giữ nóng lâu hơn ấm kim loại.'},
+  {name:'Vàng',emoji:'🥇',g:'good',sci:'Vàng là kim loại quý dẫn nhiệt rất tốt → dùng trong điện tử cao cấp.'},
+  {name:'Tre',emoji:'🎋',g:'bad',sci:'Tre dẫn nhiệt kém giống gỗ → làm đũa, bát không bị nóng.'},
+  {name:'Nỉ',emoji:'🧣',g:'bad',sci:'Vải nỉ dày, giữ nhiều không khí → cách nhiệt tốt, làm áo ấm mùa đông.'},
+  {name:'Thạch anh',emoji:'💎',g:'bad',sci:'Thạch anh (đá) dẫn nhiệt kém hơn kim loại → dùng làm bề mặt bếp.'},
+  {name:'Chì',emoji:'🔋',g:'good',sci:'Chì là kim loại nặng, dẫn nhiệt tốt → nhưng độc nên ít dùng trong đời sống.'},
+];
+
+/* ROUND 2 — Per-team scenarios */
+const R2_SCENARIOS=[
+  {
+    env:'❄️ Bắc Cực (-10°C)',emoji:'🌨️',color:'linear-gradient(135deg,#ddeeff,#aad4f5)',
+    opts:{
+      outer:[{n:'Áo phao',ok:true,e:'🧥'},{n:'Áo len dày',ok:true,e:'🧶'},{n:'Áo lanh mỏng',ok:false,e:'👕'},{n:'Áo phông',ok:false,e:'👕'},{n:'Áo lông vũ',ok:true,e:'🪶'},{n:'Áo gió mỏng',ok:false,e:'🌬️'}],
+      inner:[{n:'Áo dạ dày',ok:true,e:'🥼'},{n:'Áo cotton mỏng',ok:false,e:'👕'},{n:'Áo len trong',ok:true,e:'🧶'},{n:'Áo ba lỗ',ok:false,e:'👕'}],
+      leg:[{n:'Quần len giữ ấm',ok:true,e:'👖'},{n:'Quần shorts',ok:false,e:'🩳'},{n:'Quần dày lót lông',ok:true,e:'👖'},{n:'Quần jeans mỏng',ok:false,e:'👖'}],
+      acc:[{n:'Mũ len',ok:true,e:'🧢'},{n:'Găng tay len',ok:true,e:'🧤'},{n:'Ủng tuyết',ok:true,e:'👢'},{n:'Dép xăng-đan',ok:false,e:'🩴'},{n:'Khăn quàng len',ok:true,e:'🧣'},{n:'Kính bảo hộ',ok:true,e:'🥽'}],
+    },
+    sci:'❄️ Bắc Cực -10°C: Cần áo len, phao, lông vũ – các vật liệu GIỮ KHÔNG KHÍ. Không khí là chất cách nhiệt tốt nhất!',
+  },
+  {
+    env:'🏜️ Sa Mạc (+45°C)',emoji:'🏜️',color:'linear-gradient(135deg,#fff3e0,#ffcc80)',
+    opts:{
+      outer:[{n:'Áo rộng màu trắng',ok:true,e:'🤍'},{n:'Áo đen chật',ok:false,e:'🖤'},{n:'Áo chống nắng',ok:true,e:'🧥'},{n:'Áo phao',ok:false,e:'🧥'},{n:'Áo len dày',ok:false,e:'🧶'},{n:'Áo vải nhẹ sáng',ok:true,e:'👕'}],
+      inner:[{n:'Áo cotton nhẹ',ok:true,e:'👕'},{n:'Áo dạ dày',ok:false,e:'🥼'},{n:'Áo ba lỗ nhẹ',ok:true,e:'👕'},{n:'Áo len',ok:false,e:'🧶'}],
+      leg:[{n:'Quần linen rộng',ok:true,e:'👖'},{n:'Quần dài nhẹ sáng',ok:true,e:'👖'},{n:'Quần len dày',ok:false,e:'👖'},{n:'Quần shorts nhẹ',ok:true,e:'🩳'}],
+      acc:[{n:'Mũ rộng vành',ok:true,e:'👒'},{n:'Khăn choàng',ok:true,e:'🧣'},{n:'Kính mắt',ok:true,e:'🕶️'},{n:'Mũ len',ok:false,e:'🧢'},{n:'Kem chống nắng',ok:true,e:'🧴'},{n:'Ủng tuyết',ok:false,e:'👢'}],
+    },
+    sci:'☀️ Sa mạc +45°C: Cần vải THOÁNG để nhiệt thoát ra. Màu SÁNG phản xạ nắng. Tránh len, phao, màu tối giữ nhiệt!',
+  },
+  {
+    env:'🌿 Rừng Nhiệt Đới (+28°C)',emoji:'🌿',color:'linear-gradient(135deg,#e5f6e5,#90d090)',
+    opts:{
+      outer:[{n:'Áo khoác nhẹ',ok:true,e:'🧥'},{n:'Áo chống muỗi',ok:true,e:'🦟'},{n:'Áo phao',ok:false,e:'🧥'},{n:'Áo dài tay nhẹ',ok:true,e:'👕'},{n:'Áo len',ok:false,e:'🧶'},{n:'Áo ngắn tay',ok:false,e:'👕'}],
+      inner:[{n:'Áo cotton',ok:true,e:'👕'},{n:'Áo dạ',ok:false,e:'🥼'},{n:'Áo thấm mồ hôi',ok:true,e:'👕'},{n:'Áo len trong',ok:false,e:'🧶'}],
+      leg:[{n:'Quần dài kaki',ok:true,e:'👖'},{n:'Quần bảo hộ',ok:true,e:'👖'},{n:'Quần shorts',ok:false,e:'🩳'},{n:'Quần len dày',ok:false,e:'👖'}],
+      acc:[{n:'Mũ rộng vành',ok:true,e:'👒'},{n:'Ủng rừng',ok:true,e:'👢'},{n:'Bình nước',ok:true,e:'🧴'},{n:'Thuốc chống muỗi',ok:true,e:'🚫'},{n:'Mũ len',ok:false,e:'🧢'},{n:'Sandal',ok:false,e:'🩴'}],
+    },
+    sci:'🌿 Rừng nhiệt đới +28°C: Cần vải THOÁNG NHẸ, che kín chống côn trùng. Không cần áo ấm – trời đã nóng!',
+  },
+  {
+    env:'⛰️ Núi Tuyết (-15°C)',emoji:'⛰️',color:'linear-gradient(135deg,#ede8fb,#c4a8f0)',
+    opts:{
+      outer:[{n:'Áo gió chống thấm',ok:true,e:'🌬️'},{n:'Áo phao nhẹ',ok:true,e:'🧥'},{n:'Áo mỏng',ok:false,e:'👕'},{n:'Áo lanh',ok:false,e:'👕'},{n:'Áo len dày',ok:true,e:'🧶'},{n:'Áo cotton mỏng',ok:false,e:'👕'}],
+      inner:[{n:'Áo len',ok:true,e:'🧶'},{n:'Áo ba lỗ',ok:false,e:'👕'},{n:'Áo giữ nhiệt',ok:true,e:'🥼'},{n:'Áo cotton nhẹ',ok:false,e:'👕'}],
+      leg:[{n:'Quần kaki dày',ok:true,e:'👖'},{n:'Quần leo núi',ok:true,e:'👖'},{n:'Quần shorts',ok:false,e:'🩳'},{n:'Quần dép',ok:false,e:'👖'}],
+      acc:[{n:'Mũ len',ok:true,e:'🧢'},{n:'Dây an toàn',ok:true,e:'⛓️'},{n:'Giày leo núi',ok:true,e:'👟'},{n:'Kính bảo hộ',ok:true,e:'🥽'},{n:'Dép',ok:false,e:'🩴'},{n:'Sandal',ok:false,e:'🩴'}],
+    },
+    sci:'⛰️ Núi tuyết -15°C: Cần áo giữ ấm + chống gió. Nhiều lớp = nhiều lớp không khí cách nhiệt!',
+  },
+];
+
+/* ROUND 3 */
+const CUPS_DATA=[
+  {id:'A',lbl:'Cốc A',mat:'Bọc Len 🧶',emoji:'☕',rate:.28,best:false,color:'#f9b8d0'},
+  {id:'B',lbl:'Cốc B',mat:'Bọc Kim Loại 🔩',emoji:'☕',rate:.72,best:false,color:'#90a4ae'},
+  {id:'C',lbl:'Cốc C',mat:'Bọc Xốp 🟡',emoji:'☕',rate:.20,best:true,color:'#90d090'},
+  {id:'D',lbl:'Cốc D',mat:'Không bọc ❌',emoji:'☕',rate:.95,best:false,color:'#aad4f5'},
+];
+
+/* ROUND 4 — 50 true/false questions */
+const BLITZ_QS=[
+  {q:'Kim loại dẫn nhiệt TỐT hơn gỗ.',ans:true,hint:'💡 Cái nào mau nóng hơn khi để ngoài nắng: thanh sắt hay thanh gỗ?',sci:'✅ Kim loại có nhiều electron tự do truyền nhiệt rất nhanh. Gỗ có lỗ hổng chứa không khí nên dẫn nhiệt kém.',illus:'🔩 vs 🪵'},
+  {q:'Áo len giữ ấm vì nó TỰ SINH RA nhiệt.',ans:false,hint:'💡 Áo len bản thân có sinh ra nhiệt không?',sci:'❌ Áo len KHÔNG sinh nhiệt. Nó giữ lớp không khí giữa các sợi len → không khí cách nhiệt → hạn chế nhiệt cơ thể thoát ra.',illus:'🧶🛡️'},
+  {q:'Nhiệt truyền từ nơi NÓNG sang nơi LẠNH.',ans:true,hint:'💡 Thả cục nước đá vào nước nóng: cái gì xảy ra?',sci:'✅ Đây là định luật cơ bản về dẫn nhiệt. Nhiệt luôn truyền từ vật có nhiệt độ cao hơn sang vật thấp hơn.',illus:'🔥➡️❄️'},
+  {q:'Cán nồi làm bằng NHỰA để bền hơn kim loại.',ans:false,hint:'💡 Cán nồi phải cầm tay khi nấu ăn nóng. Cái gì quan trọng hơn: bền hay không bỏng tay?',sci:'❌ Cán nồi làm bằng nhựa/gỗ vì chúng dẫn nhiệt KÉM → tay không bị bỏng khi cầm nồi đang nóng.',illus:'🪣🛡️🖐️'},
+  {q:'Mặc nhiều lớp áo mỏng thường ẤM HƠN một áo dày.',ans:true,hint:'💡 Giữa các lớp áo có gì? Không khí có giúp giữ nhiệt không?',sci:'✅ Nhiều lớp áo = nhiều lớp không khí bị giữ lại = nhiều lớp cách nhiệt → giữ ấm tốt hơn.',illus:'👕👕👕 > 🧥'},
+  {q:'Không khí là chất DẪN NHIỆT tốt.',ans:false,hint:'💡 Tại sao len, xốp, bông đều giữ ấm? Vì chúng đều giữ được...?',sci:'❌ Không khí là chất CÁCH NHIỆT tốt. Phân tử không khí ở xa nhau → nhiệt truyền rất chậm.',illus:'💨🛡️'},
+  {q:'Bình giữ nhiệt có lớp CHÂN KHÔNG để giữ nóng lâu.',ans:true,hint:'💡 Tại sao bình giữ nhiệt giữ nóng lâu hơn cốc thường?',sci:'✅ Lớp chân không giữa hai vách ngăn cản nhiệt truyền ra ngoài hoàn toàn.',illus:'🫙🛡️'},
+  {q:'Ở sa mạc nên mặc áo màu ĐEN để ấm hơn.',ans:false,hint:'💡 Sa mạc rất nóng. Áo đen hay áo trắng phản xạ nắng tốt hơn?',sci:'❌ Sa mạc rất nóng. Nên mặc áo MÀU SÁNG để phản xạ ánh nắng và vải THOÁNG để nhiệt thoát ra.',illus:'☀️➡️🤍 vs 🖤'},
+  {q:'Sắt nóng hơn gỗ khi để cùng một chỗ dưới nắng.',ans:true,hint:'💡 Cả hai cùng nhận nhiệt như nhau, cái nào dẫn nhiệt tốt hơn sẽ nóng hơn?',sci:'✅ Sắt dẫn nhiệt tốt hơn gỗ nhiều lần → nhận và tích nhiệt nhanh hơn → nóng hơn khi cùng đặt dưới nắng.',illus:'⚙️🔥 vs 🪵'},
+  {q:'Xốp và len đều là chất CÁCH NHIỆT tốt vì chứa không khí.',ans:true,hint:'💡 Cả hai đều có nhiều lỗ hổng nhỏ chứa gì?',sci:'✅ Xốp và len đều có nhiều lỗ nhỏ giữ không khí → không khí là chất cách nhiệt tốt nhất → hai vật này cách nhiệt tốt.',illus:'🟡🧶➡️❄️🛡️'},
+  {q:'Kim loại là chất cách nhiệt tốt nhất.',ans:false,hint:'💡 Kim loại khi chạm vào cảm thấy lạnh hay ấm?',sci:'❌ Kim loại dẫn nhiệt TỐT (không phải cách nhiệt). Chất cách nhiệt tốt là không khí, len, xốp, bông.',illus:'🔩 dẫn nhiệt TỐT ≠ cách nhiệt'},
+  {q:'Áo mưa làm bằng nhựa giúp cách nhiệt và chống nước.',ans:true,hint:'💡 Nhựa dẫn nhiệt tốt hay kém?',sci:'✅ Nhựa dẫn nhiệt kém → cách nhiệt. Nhựa cũng không thấm nước → áo mưa nhựa vừa giữ ấm vừa chống mưa.',illus:'🧣🌧️'},
+  {q:'Đồng dẫn nhiệt tốt hơn nhôm.',ans:true,hint:'💡 Trong ngành nấu ăn, đáy nồi đồng được coi là tốt nhất vì sao?',sci:'✅ Đồng dẫn nhiệt tốt hơn nhôm, nhưng nhôm rẻ và nhẹ hơn nên phổ biến hơn trong đời sống.',illus:'🥉 > 🔧'},
+  {q:'Khi chạm vào kim loại lạnh, tay bị lạnh do kim loại ĐÃ LẠNH SẴN.',ans:false,hint:'💡 Thực ra tay bạn đang ở nhiệt độ 37°C. Điều gì xảy ra khi tay chạm kim loại ở nhiệt độ phòng?',sci:'❌ Kim loại không "lạnh sẵn". Do kim loại dẫn nhiệt TỐT → nhiệt từ tay truyền vào kim loại rất nhanh → tay cảm thấy lạnh.',illus:'🖐️➡️🔩 nhiệt thoát ra nhanh'},
+  {q:'Gỗ làm cán nồi vì gỗ CỨNG hơn kim loại.',ans:false,hint:'💡 Thực ra kim loại cứng hơn gỗ. Vậy tại sao cán nồi làm bằng gỗ?',sci:'❌ Gỗ làm cán nồi vì gỗ dẫn nhiệt KÉM → tay không bị bỏng. Không phải vì gỗ cứng hơn.',illus:'🪵🛡️🖐️'},
+  {q:'Nước sôi ở 100°C sẽ lập tức nguội khi đổ vào bình thủy tinh.',ans:false,hint:'💡 Thủy tinh dẫn nhiệt tốt hay kém so với không khí?',sci:'❌ Thủy tinh dẫn nhiệt kém hơn kim loại nhiều → không nguội lập tức. Nhưng cũng không giữ nhiệt lâu bằng phích nước.',illus:'🪟 dẫn nhiệt kém → nguội từ từ'},
+  {q:'Bê tông (xi măng) dẫn nhiệt TỐT HƠN gỗ.',ans:true,hint:'💡 Khi đi chân trần trên sàn bê tông và sàn gỗ, cái nào lạnh hơn?',sci:'✅ Bê tông dẫn nhiệt tốt hơn gỗ → sàn bê tông cảm thấy lạnh hơn sàn gỗ khi đi chân trần.',illus:'🧱 > 🪵 (dẫn nhiệt)'},
+  {q:'Phích nước hoạt động nhờ lớp chân không NGĂN dẫn nhiệt.',ans:true,hint:'💡 Trong lớp chân không có gì? Nếu không có vật chất thì nhiệt truyền qua được không?',sci:'✅ Chân không = không có vật chất → không có môi trường truyền nhiệt → nhiệt không thể truyền qua → phích giữ nóng/lạnh lâu.',illus:'🫙🛡️♾️'},
+  {q:'Len dẫn nhiệt tốt vì có nhiều sợi dày đặc.',ans:false,hint:'💡 Len có nhiều sợi nhưng giữa các sợi đó có gì?',sci:'❌ Len dẫn nhiệt KÉM vì giữa các sợi len có nhiều không khí nhỏ li ti → không khí cách nhiệt → len giữ ấm.',illus:'🧶 → 💨 (không khí) → 🛡️'},
+  {q:'Mùa đông nên dùng chăn bông vì bông tự sinh nhiệt.',ans:false,hint:'💡 Bông có nguồn năng lượng nào để sinh nhiệt không?',sci:'❌ Bông KHÔNG sinh nhiệt. Bông giữ không khí ấm quanh cơ thể → không khí cách nhiệt → cơ thể không bị mất nhiệt ra ngoài.',illus:'🌸 → 💨🛡️ → 😊ấm'},
+  {q:'Đũa gỗ KHÔNG bị nóng khi khuấy thức ăn đang sôi.',ans:true,hint:'💡 Gỗ dẫn nhiệt tốt hay kém?',sci:'✅ Gỗ dẫn nhiệt kém → nhiệt không truyền nhanh lên đầu đũa cầm → tay không bị bỏng. Nếu dùng đũa kim loại sẽ rất nóng!',illus:'🪵🥢🛡️'},
+  {q:'Bơi lội trong nước lạnh làm cơ thể mất nhiệt NHANH HƠN đứng trong không khí lạnh.',ans:true,hint:'💡 Nước dẫn nhiệt tốt hơn không khí bao nhiêu lần?',sci:'✅ Nước dẫn nhiệt tốt hơn không khí khoảng 25 lần → cơ thể mất nhiệt trong nước nhanh hơn nhiều so với trong không khí.',illus:'💧 > 💨 (dẫn nhiệt) x25'},
+  {q:'Cửa kính đôi giữ ấm hơn kính đơn nhờ lớp không khí giữa.',ans:true,hint:'💡 Giữa hai lớp kính đôi có gì? Chất đó dẫn nhiệt như thế nào?',sci:'✅ Lớp không khí hoặc khí trơ giữa hai tấm kính dẫn nhiệt rất kém → hạn chế nhiệt phòng thoát ra ngoài.',illus:'🪟🪟 + 💨 → 🛡️'},
+  {q:'Kim loại cảm thấy lạnh hơn gỗ vì nhiệt độ của nó thấp hơn.',ans:false,hint:'💡 Cả hai đều trong phòng có cùng nhiệt độ phòng. Vậy tại sao cảm giác khác nhau?',sci:'❌ Kim loại và gỗ cùng nhiệt độ phòng. Kim loại cảm thấy lạnh hơn vì dẫn nhiệt TỐT → nhiệt từ tay truyền vào kim loại rất nhanh.',illus:'🔩 = 🪵 (nhiệt độ) nhưng 🔩 dẫn nhiệt nhanh hơn'},
+  {q:'Quần áo mặc nhiều lớp mùa đông hiệu quả vì có nhiều lớp không khí.',ans:true,hint:'💡 Điều gì nằm giữa các lớp áo?',sci:'✅ Không khí giữa các lớp áo là lớp cách nhiệt. Mỗi lớp áo thêm = thêm một lớp không khí = thêm lớp cách nhiệt.',illus:'👕+👕+👕 = 💨💨💨🛡️'},
+  {q:'Cát sa mạc GIỮ NHIỆT lâu hơn không khí.',ans:true,hint:'💡 Tại sao sa mạc rất nóng ban ngày nhưng rất lạnh ban đêm?',sci:'✅ Cát dẫn nhiệt kém → hấp thu nhiệt từ mặt trời rồi giữ nhiệt lâu. Ban đêm mất nhiệt chậm. Khác với đại dương điều tiết nhiệt tốt hơn.',illus:'🏖️🔥 ban ngày → ❄️ ban đêm'},
+  {q:'Nhựa được dùng làm vỏ điện thoại vì dẫn nhiệt kém, bảo vệ linh kiện.',ans:true,hint:'💡 Linh kiện điện tử sinh nhiệt khi hoạt động. Vỏ nhựa giúp gì?',sci:'✅ Nhựa dẫn nhiệt kém → nhiệt không thoát ra quá nhanh và không làm người dùng bị bỏng. Cũng cách điện tốt.',illus:'🪣📱🛡️'},
+  {q:'Áo màu TRẮNG mát hơn áo màu ĐEN khi ở ngoài trời nắng.',ans:true,hint:'💡 Màu sắc ảnh hưởng đến việc hấp thu hay phản xạ ánh sáng như thế nào?',sci:'✅ Màu trắng PHẢN XẠ ánh sáng (và nhiệt). Màu đen HẤP THỤ ánh sáng (và nhiệt). → Áo trắng mát hơn khi ra nắng.',illus:'🤍 phản xạ ↔ 🖤 hấp thụ'},
+  {q:'Nước trong bể bơi cảm thấy lạnh hơn không khí vì nước ở nhiệt độ thấp hơn.',ans:false,hint:'💡 Cả không khí và nước trong bể thường xấp xỉ nhau về nhiệt độ. Vậy tại sao nước lạnh hơn?',sci:'❌ Nước dẫn nhiệt tốt hơn không khí nhiều lần → lấy nhiệt từ da nhanh hơn → cảm thấy lạnh hơn, dù nhiệt độ có thể tương đương.',illus:'💧 dẫn nhiệt nhanh hơn 💨'},
+  {q:'Phích nước (thermos) chứa nước sôi vẫn giữ nóng sau 8 tiếng.',ans:true,hint:'💡 Lớp chân không và vỏ nhựa của phích giúp gì?',sci:'✅ Phích nước có lớp chân không và vỏ cách nhiệt → giảm tối đa việc nhiệt thoát ra → giữ nước nóng 8-12 tiếng.',illus:'🫙🛡️⏰8h'},
+  {q:'Sợi cotton thoáng mát hơn len vì cotton dẫn nhiệt KÉM hơn.',ans:false,hint:'💡 Cotton mát hơn vì thoáng khí hay vì dẫn nhiệt kém?',sci:'❌ Cotton mát hơn không phải vì dẫn nhiệt kém hơn len, mà vì cotton THOÁNG KHÍ hơn → mồ hôi bay hơi dễ → làm mát tự nhiên.',illus:'🌿 thoáng > 🧶 bí'},
+  {q:'Kim loại và gỗ ở cùng nhiệt độ phòng nhưng kim loại CẢM THẤY lạnh hơn khi chạm vào.',ans:true,hint:'💡 Chúng cùng nhiệt độ. Sự khác biệt là ở tốc độ truyền nhiệt.',sci:'✅ Kim loại dẫn nhiệt tốt hơn gỗ → khi chạm vào, nhiệt từ tay truyền vào kim loại nhanh hơn → cảm giác lạnh hơn dù cùng nhiệt độ.',illus:'🔩 ≈ 🪵 (°C) nhưng 🔩 rút nhiệt nhanh hơn'},
+  {q:'Đá (băng) lạnh hơn nước dạng lỏng nên cốc đá lạnh tay hơn cốc nước cùng nhiệt độ.',ans:false,hint:'💡 Nếu cả hai cùng 0°C thì sao?',sci:'❌ Ở cùng 0°C, đá và nước có nhiệt độ như nhau. Cảm giác lạnh khác nhau nếu nhiệt độ khác, không phải do trạng thái.',illus:'❄️ = 💧 (nếu cùng 0°C)'},
+  {q:'Vật liệu cách nhiệt được dùng trong xây dựng nhà để tiết kiệm điện.',ans:true,hint:'💡 Nếu nhà cách nhiệt tốt, máy lạnh/máy sưởi có cần hoạt động nhiều không?',sci:'✅ Vật liệu cách nhiệt (xốp, bông thủy tinh) trong tường và mái nhà → giữ nhiệt trong nhà vào mùa đông, mát vào mùa hè → tiết kiệm điện.',illus:'🏠🛡️ → 💡tiết kiệm'},
+  {q:'Chăn điện SINH RA nhiệt để sưởi ấm.',ans:true,hint:'💡 Chăn điện dùng điện để làm gì?',sci:'✅ Chăn điện có dây điện trở bên trong → điện qua dây điện trở sinh ra nhiệt (hiệu ứng Joule) → làm ấm. Khác với chăn len chỉ GIỮ nhiệt.',illus:'🔌➡️🔥 (sinh nhiệt)'},
+  {q:'Tường nhà hai lớp có lớp không khí giữa sẽ cách nhiệt tốt hơn tường một lớp.',ans:true,hint:'💡 Lớp không khí giữa hai tường có tác dụng gì?',sci:'✅ Lớp không khí giữa hai tường dẫn nhiệt kém → hạn chế nhiệt thoát ra ngoài mùa đông và hạn chế nhiệt vào nhà mùa hè.',illus:'🧱💨🧱 > 🧱 (một lớp)'},
+  {q:'Ăn kem (đá lạnh) giúp cơ thể mát vì đá lạnh HẤP THU nhiệt từ cơ thể.',ans:true,hint:'💡 Nhiệt truyền từ đâu sang đâu khi ăn kem?',sci:'✅ Đá lạnh ở nhiệt độ thấp hơn cơ thể → nhiệt từ cơ thể truyền sang kem để làm tan đá và nóng lên → cơ thể mất nhiệt → cảm thấy mát.',illus:'🍦 + 🔥cơ thể → ❄️ → 😊mát'},
+  {q:'Kim loại dẫn nhiệt tốt hơn chất khí.',ans:true,hint:'💡 So sánh kim loại và không khí: cái nào dẫn nhiệt nhanh hơn?',sci:'✅ Kim loại dẫn nhiệt tốt hơn khí rất nhiều (hàng trăm lần). Đây là lý do tại sao không khí là chất cách nhiệt tốt.',illus:'🔩 >> 💨 (dẫn nhiệt)'},
+  {q:'Nồi đất (nồi gốm) giữ nhiệt lâu hơn nồi kim loại.',ans:true,hint:'💡 Đất sét dẫn nhiệt tốt hay kém so với kim loại?',sci:'✅ Gốm dẫn nhiệt kém hơn kim loại → hấp thu nhiệt chậm và mất nhiệt chậm → giữ nóng thức ăn lâu hơn nồi kim loại.',illus:'🫙 > 🥘 (giữ nhiệt)'},
+  {q:'Khi đun nồi kim loại trên bếp, TAY CẦM gỗ nóng lên CHẬM hơn thân nồi.',ans:true,hint:'💡 Gỗ và kim loại dẫn nhiệt khác nhau như thế nào?',sci:'✅ Kim loại dẫn nhiệt tốt → thân nồi nóng nhanh. Gỗ dẫn nhiệt kém → cán gỗ nóng lên chậm → an toàn hơn cho tay.',illus:'🥘🔥 → 🪵 (chậm)'},
+  {q:'Áo phao (jacket) ấm vì vải nó rất dày và cứng.',ans:false,hint:'💡 Áo phao thực ra rất nhẹ. Lý do ấm không phải từ độ dày vải.',sci:'❌ Áo phao ấm vì chứa lông vũ hoặc sợi tổng hợp bên trong giữ rất nhiều không khí → không khí cách nhiệt → giữ ấm cơ thể.',illus:'🪶💨🛡️ ≠ độ dày'},
+  {q:'Nước biển ấm hơn không khí trên biển vào ban đêm.',ans:true,hint:'💡 Nước hay không khí giữ nhiệt lâu hơn?',sci:'✅ Nước có nhiệt dung riêng lớn hơn không khí → tích nhiệt nhiều hơn → ban đêm nước biển mất nhiệt chậm hơn không khí.',illus:'🌊ấm hơn 💨 ban đêm'},
+  {q:'Bọc xốp giúp lon nước giữ lạnh vì xốp là chất CÁCH NHIỆT.',ans:true,hint:'💡 Xốp có rất nhiều bong bóng không khí → dẫn nhiệt như thế nào?',sci:'✅ Xốp chứa hàng triệu bong bóng không khí nhỏ → dẫn nhiệt cực kém → cách nhiệt tốt → lon nước lạnh không hấp thu nhiệt từ môi trường.',illus:'🟡💨💨 → ❄️🛡️'},
+  {q:'Mùa hè nên uống nước lạnh để GIỮ LẠNH cơ thể suốt ngày.',ans:false,hint:'💡 Nước lạnh có thể giúp mát ngay lúc đó, nhưng suốt ngày thì sao?',sci:'❌ Nước lạnh giúp mát tạm thời. Cơ thể tự điều tiết nhiệt độ bằng mồ hôi. Uống đủ nước và ở chỗ thoáng mát hiệu quả hơn.',illus:'💧❄️ tạm thời → 😰 lại nóng'},
+  {q:'Kim cương dẫn nhiệt tốt hơn hầu hết kim loại.',ans:true,hint:'💡 Kim cương (carbon) có cấu trúc đặc biệt. Nó là chất gì?',sci:'✅ Kim cương dẫn nhiệt TỐT HƠN hầu hết kim loại (kể cả đồng). Đây là điều ngạc nhiên vì kim cương là phi kim nhưng dẫn nhiệt cực tốt.',illus:'💎 dẫn nhiệt > 🥉đồng'},
+  {q:'Giữ lạnh lon nước bằng tay → tay ĐÃ TRUYỀN LẠNH vào lon.',ans:false,hint:'💡 "Lạnh" có phải là thứ truyền được không?',sci:'❌ Không có "truyền lạnh". Thực ra nhiệt từ tay TRUYỀN vào lon lạnh → tay mất nhiệt → cảm thấy lạnh. Nhiệt luôn truyền từ nóng sang lạnh.',illus:'🖐️🔥➡️❄️ (nhiệt truyền, không phải lạnh truyền)'},
+  {q:'Len, xốp, bông đều giữ ấm tốt VÌ chúng đều chứa không khí.',ans:true,hint:'💡 Điểm chung của len, xốp, bông là gì?',sci:'✅ Đúng! Cả ba đều có cấu trúc xốp, giữ nhiều không khí nhỏ li ti bên trong → không khí cách nhiệt → đây là nguyên nhân chính giữ ấm.',illus:'🧶🟡🌸 đều = 💨💨 = 🛡️ấm'},
+  {q:'Sàn đá cẩm thạch lạnh hơn sàn gỗ dù cùng nhiệt độ vì đá dẫn nhiệt tốt hơn.',ans:true,hint:'💡 Chân tiếp xúc: đá hay gỗ, cái nào "lấy" nhiệt từ chân nhanh hơn?',sci:'✅ Đá dẫn nhiệt tốt hơn gỗ → khi đi chân trần, đá lấy nhiệt từ chân nhanh hơn → cảm giác lạnh hơn, dù nhiệt độ bằng nhau.',illus:'💎🧱 dẫn nhiệt nhanh hơn 🪵'},
+  {q:'Mặc áo ẩm (ướt) sẽ ấm hơn mặc áo khô trong mùa đông.',ans:false,hint:'💡 Nước dẫn nhiệt tốt hơn không khí. Vậy áo ướt hay áo khô cách nhiệt tốt hơn?',sci:'❌ Áo ướt rất nguy hiểm trong mùa đông! Nước dẫn nhiệt tốt hơn không khí 25 lần → áo ướt lấy nhiệt từ cơ thể nhanh → có thể bị hạ thân nhiệt.',illus:'💧 dẫn nhiệt x25 → ❄️nguy hiểm'},
+];
+
+/* ROUND 5 — 28 buzzer questions */
+const R5_QS=[
+  {q:'❓ Tại sao cán nồi thường làm bằng nhựa hoặc gỗ chứ không phải kim loại?',hint:'Nghĩ xem nhựa/gỗ dẫn nhiệt như thế nào so với kim loại?',ans:'Vì nhựa và gỗ dẫn nhiệt KÉM → nhiệt từ nồi không truyền vào tay ta → không bị bỏng khi cầm nồi đang nóng. Kim loại dẫn nhiệt tốt sẽ rất nóng và nguy hiểm.'},
+  {q:'❓ Tại sao bình giữ nhiệt có thể giữ đồ uống nóng rất lâu?',hint:'Bên trong bình giữ nhiệt có lớp đặc biệt gì? Lớp đó ngăn cản điều gì?',ans:'Bình giữ nhiệt có vách đôi với lớp CHÂN KHÔNG ở giữa. Không có môi trường dẫn nhiệt → nhiệt không thể truyền ra ngoài → giữ nóng/lạnh rất lâu.'},
+  {q:'❓ Tại sao mặc nhiều lớp áo mỏng thường ấm hơn một chiếc áo dày?',hint:'Giữa các lớp áo có gì? Chất đó có dẫn nhiệt tốt không?',ans:'Mỗi lớp áo giữ một lớp KHÔNG KHÍ. Không khí là chất cách nhiệt tốt. Nhiều lớp áo = nhiều lớp không khí = nhiều lớp cách nhiệt → giữ ấm tốt hơn.'},
+  {q:'❓ Tại sao vào mùa đông, cửa kính đôi giữ ấm tốt hơn kính đơn?',hint:'Giữa hai lớp kính đôi có gì? Chất đó dẫn nhiệt như thế nào?',ans:'Cửa kính đôi có lớp KHÔNG KHÍ hoặc khí trơ giữa hai tấm kính. Không khí dẫn nhiệt rất kém → hạn chế nhiệt phòng thoát ra ngoài.'},
+  {q:'❓ Tại sao áo phao (áo lông vũ) rất ấm dù rất nhẹ?',hint:'Bên trong áo phao chứa gì? Chất đó có vai trò gì?',ans:'Áo phao chứa lông vũ hoặc sợi tổng hợp xốp, giữ rất nhiều KHÔNG KHÍ bên trong. Không khí cách nhiệt tốt → giữ ấm dù áo nhẹ.'},
+  {q:'❓ Tại sao cốc kim loại nóng hơn cốc nhựa khi đổ nước sôi vào?',hint:'Kim loại và nhựa dẫn nhiệt khác nhau như thế nào?',ans:'Kim loại dẫn nhiệt TỐT → nhiệt từ nước nóng truyền ra thành cốc kim loại rất nhanh → cốc nóng ngay. Nhựa dẫn nhiệt kém → cốc không nóng bằng.'},
+  {q:'❓ Tại sao nhà vùng lạnh có tường dày và nhiều cửa sổ kép?',hint:'Tường dày và cửa kính đôi có điểm chung gì về cách nhiệt?',ans:'Tường dày có nhiều lớp vật liệu cách nhiệt. Cửa kính đôi có không khí ở giữa. Cả hai đều tăng khả năng CÁCH NHIỆT → giữ nhiệt trong nhà, tiết kiệm năng lượng sưởi.'},
+  {q:'❓ Giải thích tại sao đũa gỗ không bị nóng khi khuấy canh đang sôi?',hint:'Gỗ là chất dẫn nhiệt tốt hay kém?',ans:'Gỗ là chất dẫn nhiệt KÉM (cách nhiệt tốt). Nhiệt từ canh nóng truyền vào đũa rất chậm → đầu cầm tay vẫn mát → không bị bỏng.'},
+  {q:'❓ Tại sao người ở vùng sa mạc mặc áo rộng màu trắng dù trời rất nóng?',hint:'Màu sắc và độ rộng của áo ảnh hưởng đến nhiệt như thế nào?',ans:'Màu trắng PHẢN XẠ ánh nắng → ít hấp thu nhiệt. Áo rộng tạo khoảng không khí thoáng giữa da và vải → nhiệt cơ thể thoát ra được. Tránh màu đen hấp thu nhiệt.'},
+  {q:'❓ Tại sao xây nhà lạnh (kho đông) người ta dùng tường xốp dày?',hint:'Xốp dẫn nhiệt như thế nào? Kho đông cần ngăn điều gì?',ans:'Xốp có hàng triệu bong bóng không khí → cách nhiệt cực tốt. Tường xốp dày ngăn nhiệt từ bên ngoài vào kho → giữ lạnh bên trong → tiết kiệm điện máy lạnh.'},
+  {q:'❓ Vì sao khi trời lạnh, sờ vào kim loại thấy lạnh hơn sờ vào gỗ?',hint:'Cả hai đều ở nhiệt độ phòng. Sự khác biệt là ở đâu?',ans:'Kim loại và gỗ cùng nhiệt độ phòng. Kim loại dẫn nhiệt TỐT HƠN gỗ → lấy nhiệt từ tay nhanh hơn → tay mất nhiệt nhanh → cảm giác lạnh hơn.'},
+  {q:'❓ Tại sao chim và thú vật ở vùng lạnh thường có lớp lông dày?',hint:'Lớp lông dày có vai trò gì về mặt dẫn nhiệt?',ans:'Lông dày giữ nhiều KHÔNG KHÍ giữa các sợi lông → không khí cách nhiệt tốt → hạn chế nhiệt cơ thể thoát ra ngoài → giữ ấm trong môi trường lạnh.'},
+  {q:'❓ Tại sao phích nước có vỏ ngoài bằng nhựa chứ không phải kim loại?',hint:'Vỏ ngoài của phích cần đặc tính gì?',ans:'Vỏ nhựa dẫn nhiệt KÉM → thêm một lớp cách nhiệt bên ngoài. Nhựa cũng nhẹ, bền và không truyền nhiệt ra ngoài khi tay cầm.'},
+  {q:'❓ Giải thích tại sao người thợ rèn dùng kẹp kim loại dài để cầm sắt nung đỏ?',hint:'Nếu cầm trực tiếp hoặc dùng kẹp ngắn thì sao?',ans:'Kim loại dẫn nhiệt TỐT → nhiệt từ sắt nung đỏ truyền dọc kẹp. Kẹp DÀI → nhiệt phải đi đoạn đường dài hơn → mất nhiều thời gian → đầu kẹp cầm tay ít nóng hơn.'},
+  {q:'❓ Tại sao len và bông đều giữ ấm tốt dù xuất xứ khác nhau?',hint:'Điểm chung của len và bông là gì về cấu trúc?',ans:'Cả len và bông đều có cấu trúc XỐP, giữ nhiều không khí nhỏ bên trong. Không khí là chất cách nhiệt tốt → cả hai đều ngăn nhiệt cơ thể thoát ra.'},
+  {q:'❓ Ở Bắc Cực, người ta dùng nhà tuyết (igloo) để giữ ấm. Tại sao tuyết lại giữ ấm?',hint:'Tuyết có xốp không? Giữa các tinh thể tuyết có gì?',ans:'Tuyết có cấu trúc xốp, giữ nhiều KHÔNG KHÍ giữa các tinh thể → không khí cách nhiệt tốt → tường tuyết ngăn gió lạnh và giữ nhiệt cơ thể bên trong igloo.'},
+  {q:'❓ Tại sao không nên để tay trần chạm vào vật kim loại lạnh quá lâu?',hint:'Kim loại và da tay, cái nào truyền nhiệt nhanh hơn?',ans:'Kim loại lạnh dẫn nhiệt TỐT → lấy nhiệt từ tay rất nhanh → tay mất nhiệt quá nhanh → có thể bị tê cóng hoặc dính vào kim loại (do nước trong da đóng băng).'},
+  {q:'❓ Vì sao bọc thức ăn nóng bằng giấy bạc (foil) giữ ấm tốt hơn?',hint:'Giấy bạc kim loại có đặc điểm gì ngoài việc dẫn nhiệt?',ans:'Giấy bạc phản xạ bức xạ nhiệt (tia hồng ngoại) → giảm nhiệt thoát ra bên ngoài. Kết hợp với lớp không khí tạo ra bên trong → giữ ấm hiệu quả.'},
+  {q:'❓ Tại sao mặc áo bơi ướt (wetsuit) vẫn ấm khi lặn biển lạnh?',hint:'Nước trong áo bơi có nhiệm vụ gì?',ans:'Áo bơi giữ một lớp nước mỏng sát da. Cơ thể nhanh chóng làm ấm lớp nước này. Lớp nước ấm + vải neoprene cách nhiệt → ngăn nước lạnh bên ngoài tiếp xúc da.'},
+  {q:'❓ Giải thích tại sao sàn nhà gỗ ấm chân hơn sàn đá?',hint:'Gỗ và đá dẫn nhiệt khác nhau như thế nào?',ans:'Gỗ dẫn nhiệt KÉM hơn đá → khi đi chân trần, đá lấy nhiệt từ chân nhanh hơn gỗ → cảm giác lạnh hơn. Sàn gỗ "ấm chân" hơn vì dẫn nhiệt chậm hơn.'},
+  {q:'❓ Tại sao nồi đất nấu cơm ngon hơn nồi kim loại?',hint:'Sự khác biệt về dẫn nhiệt ảnh hưởng đến quá trình nấu như thế nào?',ans:'Nồi đất dẫn nhiệt KÉM hơn → nóng lên chậm và đều, mất nhiệt chậm → nhiệt độ ổn định hơn → cơm chín đều. Kim loại nóng nhanh nhưng nguội cũng nhanh.'},
+  {q:'❓ Tại sao nhà kính (greenhouse) trồng cây ấm hơn bên ngoài vào mùa đông?',hint:'Kính có vai trò gì với bức xạ nhiệt từ mặt trời và từ đất?',ans:'Kính cho ánh sáng mặt trời vào dễ dàng. Đất và cây hấp thu ánh sáng rồi phát ra bức xạ nhiệt (hồng ngoại). Kính ngăn không cho bức xạ nhiệt thoát ra ngoài → giữ ấm.'},
+  {q:'❓ Tại sao người ta dùng xốp để đóng gói hàng điện tử dễ vỡ?',hint:'Xốp bảo vệ hàng theo cách nào? (Gợi ý: không chỉ là cơ học)',ans:'Xốp vừa đệm chống va đập (cơ học) vừa cách nhiệt tốt (vì chứa không khí) → bảo vệ hàng điện tử khỏi thay đổi nhiệt độ đột ngột → không bị ngưng tụ hơi nước.'},
+  {q:'❓ Vì sao mặc đồ ướt dưới mưa nguy hiểm hơn đứng trong không khí lạnh cùng nhiệt độ?',hint:'Nước và không khí, cái nào dẫn nhiệt tốt hơn?',ans:'Nước dẫn nhiệt tốt hơn không khí khoảng 25 lần → đồ ướt lấy nhiệt từ cơ thể nhanh hơn → nguy cơ hạ thân nhiệt cao hơn dù cùng nhiệt độ môi trường.'},
+  {q:'❓ Tại sao ấm pha trà (teapot) bằng đất nung giữ nước nóng lâu hơn ấm thép?',hint:'Đất nung và thép dẫn nhiệt khác nhau như thế nào?',ans:'Đất nung dẫn nhiệt KÉM hơn thép nhiều lần → nhiệt trong ấm thoát ra ngoài chậm hơn → nước vẫn nóng lâu hơn so với ấm thép mất nhiệt nhanh.'},
+  {q:'❓ Giải thích hiện tượng: Mùa hè bước vào nhà gạch (bê tông) thấy mát hơn ngoài trời?',hint:'Vật liệu xây dựng và không khí nóng bên ngoài: cái nào ảnh hưởng đến nhiệt độ trong nhà?',ans:'Tường gạch/bê tông có khả năng cách nhiệt nhất định → làm chậm quá trình nhiệt từ ngoài vào trong → buổi sáng tường chưa bị đốt nóng hoàn toàn → trong nhà mát hơn ngoài trời.'},
+  {q:'❓ Tại sao chăn bông (cotton dày) ấm hơn chăn vải mỏng cùng trọng lượng?',hint:'Cấu trúc bên trong của chăn bông khác gì so với chăn vải mỏng?',ans:'Chăn bông (cotton xốp) giữ nhiều lớp KHÔNG KHÍ bên trong → không khí cách nhiệt → nhiều lớp không khí hơn = ấm hơn. Chăn vải mỏng không giữ được không khí.'},
+  {q:'❓ Vì sao ở vùng biển nhiệt độ ban ngày và ban đêm không chênh lệch nhiều như ở sa mạc?',hint:'Nước và cát, cái nào tích nhiệt tốt hơn?',ans:'Nước có NHIỆT DUNG RIÊNG lớn → hấp thu và mất nhiệt chậm → điều tiết nhiệt độ ổn định. Cát nhiệt dung riêng nhỏ → nóng nhanh ban ngày và lạnh nhanh ban đêm → sa mạc chênh lệch nhiệt độ lớn.'},
+];
+
+/* R6 */
+const ENVS_DATA=[
+  {id:'arctic',n:'❄️ Bắc Cực',emoji:'🌨️',temp:'-30°C',bg:'linear-gradient(135deg,#ddeeff,#aad4f5)',
+   ideal:{outer:['Áo phao','Áo lông vũ'],inner:['Áo len dày','Áo dạ'],leg:['Quần lông','Quần dày'],acc:['Mũ len','Găng tay len','Ủng tuyết','Kính bảo hộ']},
+   avoid:['Áo lanh','Áo mỏng','Sandal','Quần shorts'],
+   sci:'Bắc Cực -30°C: cần nhiều lớp áo giữ không khí ấm. Ưu tiên lông vũ, len – vật liệu giữ không khí tốt nhất.'},
+  {id:'desert',n:'☀️ Sa Mạc',emoji:'🏜️',temp:'+45°C',bg:'linear-gradient(135deg,#fff3e0,#ffcc80)',
+   ideal:{outer:['Áo rộng màu trắng','Áo chống nắng'],inner:['Áo cotton nhẹ'],leg:['Quần linen rộng','Quần dài nhẹ'],acc:['Mũ rộng vành','Khăn choàng','Kính mắt','Kem chống nắng']},
+   avoid:['Áo đen','Áo len','Áo chật','Áo phao'],
+   sci:'Sa mạc +45°C: vải THOÁNG để nhiệt cơ thể thoát. Màu sáng PHẢN XẠ nắng. Tránh vải giữ nhiệt như len, phao.'},
+  {id:'forest',n:'🌿 Rừng Nhiệt Đới',emoji:'🌿',temp:'+28°C',bg:'linear-gradient(135deg,#e5f6e5,#90d090)',
+   ideal:{outer:['Áo khoác nhẹ','Áo chống muỗi'],inner:['Áo cotton'],leg:['Quần dài kaki','Quần bảo hộ'],acc:['Mũ rộng vành','Ủng rừng','Bình nước','Thuốc chống muỗi']},
+   avoid:['Áo phao','Sandal','Áo ngắn tay'],
+   sci:'Rừng nhiệt đới +28°C: vải thoáng nhẹ, che kín chống côn trùng. Không cần áo ấm!'},
+  {id:'mountain',n:'⛰️ Núi Tuyết',emoji:'⛰️',temp:'-15°C',bg:'linear-gradient(135deg,#ede8fb,#c4a8f0)',
+   ideal:{outer:['Áo gió chống thấm','Áo phao nhẹ'],inner:['Áo len'],leg:['Quần kaki dày','Quần leo núi'],acc:['Mũ len','Dây an toàn','Giày leo núi','Kính bảo hộ']},
+   avoid:['Áo mỏng','Sandal','Dép','Áo lanh'],
+   sci:'Núi tuyết -15°C: áo ấm + chống gió/nước. Nhiều lớp = nhiều lớp không khí cách nhiệt.'},
+  {id:'city_winter',n:'🏙️ Thành Phố Mùa Đông',emoji:'🌆',temp:'-5°C',bg:'linear-gradient(135deg,#e8e0f8,#b8a8e8)',
+   ideal:{outer:['Áo len dày','Áo khoác dạ'],inner:['Áo giữ nhiệt'],leg:['Quần dày','Quần jeans dày'],acc:['Mũ len','Khăn quàng','Găng tay']},
+   avoid:['Áo mỏng','Áo ngắn tay','Shorts','Sandal'],
+   sci:'Thành phố mùa đông -5°C: cần áo len và dạ. Lớp không khí trong len/dạ giúp cách nhiệt hiệu quả.'},
+  {id:'rainforest',n:'🌧️ Rừng Mưa',emoji:'🌧️',temp:'+25°C',bg:'linear-gradient(135deg,#e0f0ff,#90c8f8)',
+   ideal:{outer:['Áo mưa nhẹ','Áo gió chống thấm'],inner:['Áo cotton nhẹ','Áo thấm mồ hôi'],leg:['Quần chống thấm','Quần dài nhẹ'],acc:['Ủng cao su','Mũ rộng vành','Bình nước']},
+   avoid:['Áo phao dày','Áo len','Dép mỏng'],
+   sci:'Rừng mưa +25°C ẩm: cần vải chống thấm, thoáng. Không cần cách nhiệt cao vì trời nóng!'},
+];
+
+const ALL_CLOTHES={
+  outer:['Áo phao','Áo lông vũ','Áo gió chống thấm','Áo rộng màu trắng','Áo chống nắng','Áo khoác nhẹ','Áo chống muỗi','Áo len dày','Áo lanh mỏng','Áo khoác dạ','Áo mưa nhẹ'],
+  inner:['Áo dạ dày','Áo cotton nhẹ','Áo cotton','Áo len','Áo giữ nhiệt','Áo thấm mồ hôi'],
+  leg:['Quần lông','Quần dày','Quần linen rộng','Quần dài nhẹ','Quần dài kaki','Quần bảo hộ','Quần kaki dày','Quần leo núi','Quần shorts','Quần jeans dày','Quần chống thấm'],
+  acc:['Mũ len','Găng tay len','Ủng tuyết','Mũ rộng vành','Khăn choàng','Kính mắt','Ủng rừng','Dây an toàn','Giày leo núi','Kính bảo hộ','Bình nước','Khăn quàng','Ủng cao su','Thuốc chống muỗi','Kem chống nắng'],
+};
+
+/* =====================================================
+   ROUND 1 — DRAG & DROP
+   ===================================================== */
+const R1={
+  placed:{good:[],bad:[]},clickSel:null,teamIdx:0,batchSize:7,
+
+  init(){
+    G.showScreen('s-r1');
+    document.getElementById('h-round').textContent='⚡ Vòng 1: Thử Tài Chất Liệu';
+    this.teamIdx=0;
+    this.nextBatch();
+  },
+
+  nextBatch(){
+    const start=this.teamIdx*this.batchSize;
+    const matsBatch=shuffle([...MATS]).slice(0,this.batchSize);
+    this.placed={good:[],bad:[]};this.clickSel=null;
+    const t=G.teams[this.teamIdx%G.teams.length];
+    const tc=document.getElementById('r1-turn-card');
+    tc.innerHTML=`<div class="turn-badge">${t.avatar} Lượt của: ${t.name}</div>
+    <div style="font-size:.82rem;color:var(--muted);font-family:'Times New Roman',serif">Phân loại ${matsBatch.length} vật liệu!</div>`;
+    const tray=document.getElementById('r1-tray');tray.innerHTML='';
+    matsBatch.forEach(m=>{
+      const c=document.createElement('div');c.className='mat-chip';c.id='mc-'+m.name.replace(/\s/g,'_');
+      c.draggable=true;c.dataset.name=m.name;c.dataset.g=m.g;c.dataset.sci=m.sci;
+      c.innerHTML=`${m.emoji} <span>${m.name}</span>`;
+      c.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',JSON.stringify({name:m.name,g:m.g,sci:m.sci}));c.classList.add('dragging');sndPop();});
+      c.addEventListener('dragend',()=>c.classList.remove('dragging'));
+      c.addEventListener('click',()=>this.clickItem(c,m));
+      tray.appendChild(c);
+    });
+    this._mats=matsBatch;
+    const zones=document.getElementById('r1-zones');
+    zones.innerHTML=`
+      <div class="drop-zone" id="dz-good">
+        <div class="dz-head" style="color:#cc6600">⚡ Dẫn Nhiệt TỐT<br><small style="font-size:.72rem;color:var(--muted)">(Kim loại, đồng, nhôm, sắt...)</small></div>
+        <div class="dz-chips" id="dzc-good"></div>
+      </div>
+      <div class="drop-zone" id="dz-bad">
+        <div class="dz-head" style="color:#1a6fb5">🛡️ Dẫn Nhiệt KÉM / Cách Nhiệt<br><small style="font-size:.72rem;color:var(--muted)">(Len, bông, xốp, nhựa, gỗ...)</small></div>
+        <div class="dz-chips" id="dzc-bad"></div>
+      </div>`;
+    ['good','bad'].forEach(target=>{
+      const dz=document.getElementById('dz-'+target);
+      dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('hover');});
+      dz.addEventListener('dragleave',()=>dz.classList.remove('hover'));
+      dz.addEventListener('drop',e=>{
+        e.preventDefault();dz.classList.remove('hover');
+        const data=JSON.parse(e.dataTransfer.getData('text/plain')||'{}');
+        if(data.name)this.place(data.name,data.g,data.sci,target);
+      });
+      dz.addEventListener('click',()=>{if(this.clickSel)this.place(this.clickSel.name,this.clickSel.g,this.clickSel.sci,target);this.clickSel=null;});
+    });
+  },
+
+  clickItem(el,m){
+    document.querySelectorAll('.mat-chip').forEach(c=>c.classList.remove('selected'));
+    if(this.clickSel&&this.clickSel.name===m.name){this.clickSel=null;return;}
+    this.clickSel={name:m.name,g:m.g,sci:m.sci,el};
+    el.classList.add('selected');sndPop();
+  },
+
+  place(name,g,sci,target){
+    if(this.placed.good.includes(name)||this.placed.bad.includes(name))return;
+    this.placed[target].push(name);
+    const m=this._mats.find(x=>x.name===name);
+    const chip=document.createElement('div');chip.className='dz-chip';chip.textContent=(m?m.emoji:'')+' '+name;
+    document.getElementById('dzc-'+target).appendChild(chip);
+    const orig=document.getElementById('mc-'+name.replace(/\s/g,'_'));
+    if(orig){orig.classList.add('placed');orig.classList.remove('selected');}
+    this.clickSel=null;
+    document.querySelectorAll('.mat-chip').forEach(c=>c.classList.remove('selected'));
+    sndPop();
+  },
+
+  check(){
+    const all=[...this.placed.good,...this.placed.bad];
+    if(all.length<this._mats.length){
+      modal({icon:'⚠️',title:'Chưa xong!',titleClass:'hint-title',msg:`Còn ${this._mats.length-all.length} vật liệu chưa được phân loại. Hãy phân loại hết!`,btns:[{text:'OK',cls:'btn btn-blue',cb:()=>{}}]});
+      return;
+    }
+    let correct=0,wrong=[];
+    this.placed.good.forEach(name=>{
+      const m=this._mats.find(x=>x.name===name);
+      if(m&&m.g==='good')correct++;else wrong.push({name,expected:'Dẫn Nhiệt KÉM',placed:'Dẫn Nhiệt TỐT',sci:m?m.sci:''});
+    });
+    this.placed.bad.forEach(name=>{
+      const m=this._mats.find(x=>x.name===name);
+      if(m&&m.g==='bad')correct++;else wrong.push({name,expected:'Dẫn Nhiệt TỐT',placed:'Dẫn Nhiệt KÉM',sci:m?m.sci:''});
+    });
+    const pct=Math.round(correct/this._mats.length*100);
+    const ok=pct>=70;
+    if(ok){confetti(16);sndOk();}else sndBad();
+    const sciInfo=wrong.slice(0,3).map(w=>`❌ ${w.name}: Nên phân loại "${w.expected}"\n🔬 ${w.sci}`).join('\n\n');
+    const t=G.teams[this.teamIdx%G.teams.length];
+    modal({
+      icon:ok?'🎉':'💡',
+      title:ok?`✅ ${t.name}: ${correct}/${this._mats.length} đúng!`:`❌ ${t.name}: ${correct}/${this._mats.length} đúng`,
+      titleClass:ok?'ok':'bad',
+      msg:ok?`Tuyệt vời! Giáo viên cộng điểm cho ${t.name}!`:`Cần xem lại. Giáo viên quyết định điểm cho ${t.name}.`,
+      sci:sciInfo||`🔬 Kim loại (sắt, đồng, nhôm): dẫn nhiệt TỐT. Len, xốp, bông, gỗ, nhựa: dẫn nhiệt KÉM (cách nhiệt tốt).`,
+      hint:wrong.length>0?`💡 Vật phân loại sai: ${wrong.map(w=>w.name).join(', ')}`:'',
+      btns:this.teamIdx<G.teams.length-1?[
+        {text:`Đội tiếp theo →`,cls:'btn btn-blue',cb:()=>{this.teamIdx++;this.nextBatch();}},
+        {text:'🗺️ Bản đồ',cls:'btn btn-blue btn-sm',cb:()=>G.completeRound(0)}
+      ]:[
+        {text:'✅ Hoàn thành Vòng 1',cls:'btn btn-green',cb:()=>G.completeRound(0)}
+      ]
+    });
+  }
+};
+
+/* =====================================================
+   ROUND 2 — OUTFIT BY TEAM
+   ===================================================== */
+const R2={
+  picks:{},teamIdx:0,currentScenario:null,
+
+  init(){
+    G.showScreen('s-r2');
+    document.getElementById('h-round').textContent='🥶 Vòng 2: Trang Phục Sinh Tồn';
+    this.teamIdx=0;
+    this.startTeam();
+  },
+
+  startTeam(){
+    const t=G.teams[this.teamIdx];
+    const sc=R2_SCENARIOS[this.teamIdx%R2_SCENARIOS.length];
+    this.currentScenario=sc;
+    this.picks={outer:'',inner:'',leg:'',acc:[]};
+    document.getElementById('r2-header-sub').innerHTML=`<strong>${t.avatar} ${t.name}</strong> đang thiết kế trang phục cho: <strong>${sc.env}</strong>`;
+    const wrap=document.getElementById('outfit-wrap');
+    wrap.innerHTML=`
+      <div class="outfit-char" style="background:${sc.color}">
+        <span class="char-big" id="r2-char">🤔</span>
+        <div class="char-name">${t.avatar} ${t.name}</div>
+        <div class="char-status" id="r2-status">${sc.env}</div>
+        <div class="warmth-lbl">🌡️ Phù hợp: <span id="r2-wpct">0%</span></div>
+        <div class="warmth-bg"><div class="warmth-fill" id="r2-wbar" style="width:0%;background:var(--red2)"></div></div>
+      </div>
+      <div class="outfit-panel">
+        ${Object.entries(sc.opts).map(([k,items])=>`
+          <div class="outfit-slot">
+            <div class="outfit-slot-lbl">${{outer:'🧥 Áo ngoài',inner:'👕 Áo trong',leg:'👖 Quần',acc:'🎒 Phụ kiện'}[k]}</div>
+            <div class="outfit-opts" id="oo-${k}">
+              ${items.map(o=>`<div class="outfit-opt" data-cat="${k}" data-val="${o.n}" data-ok="${o.ok}" onclick="R2.pick('${k}','${o.n}',${o.ok},this)">${o.e} ${o.n}</div>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>`;
+  },
+
+  pick(cat,val,ok,el){
+    if(cat==='acc'){
+      const idx=this.picks.acc.indexOf(val);
+      if(idx>-1){this.picks.acc.splice(idx,1);el.classList.remove('chosen');}
+      else{this.picks.acc.push(val);el.classList.add('chosen');}
+    }else{
+      this.picks[cat]=val;
+      document.querySelectorAll(`[data-cat="${cat}"]`).forEach(b=>b.classList.remove('chosen'));
+      el.classList.add('chosen');
+    }
+    sndPop();this.updateWarmth();
+  },
+
+  updateWarmth(){
+    const sc=this.currentScenario;if(!sc)return;
+    let good=0,total=0;
+    ['outer','inner','leg'].forEach(k=>{
+      if(this.picks[k]){total++;const o=sc.opts[k].find(x=>x.n===this.picks[k]);if(o&&o.ok)good++;}
+    });
+    this.picks.acc.forEach(a=>{
+      total++;const o=sc.opts.acc.find(x=>x.n===a);if(o&&o.ok)good++;
+    });
+    const pct=total>0?Math.round(good/Math.max(total,4)*100):0;
+    const bar=document.getElementById('r2-wbar'),pctEl=document.getElementById('r2-wpct');
+    if(bar){bar.style.width=Math.min(100,pct*1.2)+'%';bar.style.background=pct>=70?'#5dc85d':pct>=40?'#ffe97a':'var(--red2)';}
+    if(pctEl)pctEl.textContent=Math.min(100,Math.round(pct*1.2))+'%';
+  },
+
+  test(){
+    const sc=this.currentScenario;const t=G.teams[this.teamIdx];
+    const results=[];let goodCount=0,badCount=0;
+    ['outer','inner','leg'].forEach(k=>{
+      if(!this.picks[k]){results.push(`⚠️ ${k}: Chưa chọn`);return;}
+      const o=sc.opts[k].find(x=>x.n===this.picks[k]);
+      if(o){if(o.ok)goodCount++;else badCount++;results.push(o.ok?`✅ ${this.picks[k]}: Phù hợp!`:`❌ ${this.picks[k]}: Không phù hợp với ${sc.env}`);}
+    });
+    this.picks.acc.forEach(a=>{
+      const o=sc.opts.acc.find(x=>x.n===a);
+      if(o){if(o.ok)goodCount++;else badCount++;results.push(o.ok?`✅ ${a}: Tốt!`:`❌ ${a}: Không phù hợp`);}
+    });
+    const char=document.getElementById('r2-char'),st=document.getElementById('r2-status');
+    const ok=goodCount>=3&&badCount===0;
+    if(char)char.textContent=ok?'😊':badCount>1?'😰':'😐';
+    if(st)st.textContent=ok?`An toàn tại ${sc.env}! 🎉`:badCount>0?`Vẫn nguy hiểm! 😰`:'Khá ổn nhưng chưa hoàn hảo 😐';
+    if(ok){confetti(16);sndOk();}else sndBad();
+    const wrongItems=results.filter(r=>r.startsWith('❌')).join('\n');
+    const nextBtn=this.teamIdx<G.teams.length-1?
+      [{text:`Đội tiếp → `,cls:'btn btn-blue',cb:()=>{this.teamIdx++;this.startTeam();}}]:
+      [{text:'✅ Hoàn thành Vòng 2',cls:'btn btn-green',cb:()=>G.completeRound(1)}];
+    modal({
+      icon:ok?'🎉':'🥶',
+      title:ok?`✅ ${t.name}: Trang phục hoàn hảo!`:`❌ ${t.name}: Cần điều chỉnh!`,
+      titleClass:ok?'ok':'bad',
+      msg:ok?`Giáo viên cộng điểm cho ${t.name}!`:`Tốt: ${goodCount}, Không phù hợp: ${badCount}.\n${wrongItems}`,
+      sci:sc.sci,
+      hint:!ok?`💡 Gợi ý: ${sc.sci}`:'',
+      btns:[
+        ...(!ok?[{text:'🔄 Thử lại',cls:'btn btn-orange',cb:()=>this.startTeam()}]:[]),
+        ...nextBtn
+      ]
+    });
+  }
+};
+
+/* =====================================================
+   ROUND 3 — HEAT LAB
+   ===================================================== */
+const R3={
+  pick:null,done:false,
+  init(){
+    G.showScreen('s-r3');
+    document.getElementById('h-round').textContent='🔬 Vòng 3: Phòng Thí Nghiệm';
+    this.pick=null;this.done=false;
+    document.getElementById('r3-chart').style.display='none';
+    document.getElementById('r3-sci').style.display='none';
+    const btn=document.getElementById('r3-run-btn');
+    btn.disabled=false;btn.textContent='▶ Chạy Mô Phỏng';
+    const w=document.getElementById('cups-wrap');
+    w.innerHTML=CUPS_DATA.map(c=>`
+      <div class="cup" id="cup-${c.id}" onclick="R3.select('${c.id}')">
+        <span class="cup-emoji">${c.emoji}</span>
+        <div class="cup-lbl">${c.lbl}</div>
+        <div class="cup-mat">${c.mat}</div>
+        <div class="cup-temp" id="ctemp-${c.id}">90°C</div>
+      </div>`).join('');
+  },
+  select(id){if(this.done)return;this.pick=id;CUPS_DATA.forEach(c=>{const el=document.getElementById('cup-'+c.id);if(el){el.classList.toggle('picked',c.id===id);}});sndPop();},
+  run(){
+    if(!this.pick){modal({icon:'⚠️',title:'Chưa chọn!',titleClass:'hint-title',msg:'Hãy chọn cốc bạn dự đoán giữ nhiệt lâu nhất!',btns:[{text:'OK',cls:'btn btn-blue',cb:()=>{}}]});return;}
+    if(this.done)return;
+    this.done=true;
+    const btn=document.getElementById('r3-run-btn');btn.disabled=true;btn.textContent='⏳ Đang chạy...';
+    const bestCup=CUPS_DATA.find(c=>c.best);
+    const steps=[0,1,2,3,4,5,6,7,8,9,10];
+    let step=0;
+    const iv=setInterval(()=>{
+      if(step>10){clearInterval(iv);this.showResult(bestCup);return;}
+      CUPS_DATA.forEach(c=>{
+        const temp=Math.round(90-step*c.rate*8);
+        const el=document.getElementById('ctemp-'+c.id);
+        if(el)el.textContent=Math.max(20,temp)+'°C';
+      });
+      step++;
+    },350);
+    setTimeout(()=>{
+      const chart=document.getElementById('r3-chart');chart.style.display='block';
+      this.drawChart();
+    },500);
+  },
+  drawChart(){
+    const canvas=document.getElementById('heat-canvas');
+    if(!canvas)return;
+    const ctx=canvas.getContext('2d');
+    canvas.width=canvas.offsetWidth;canvas.height=130;
+    const w=canvas.width,h=canvas.height,pts=11;
+    ctx.clearRect(0,0,w,h);
+    const cols=['#f9b8d0','#90a4ae','#5dc85d','#5ba8e8'];
+    CUPS_DATA.forEach((c,ci)=>{
+      ctx.beginPath();
+      for(let i=0;i<pts;i++){
+        const x=i*(w-40)/(pts-1)+20;
+        const temp=90-i*c.rate*8;
+        const y=h-20-(Math.max(20,temp)-20)/(90-20)*(h-40);
+        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle=cols[ci];ctx.lineWidth=2.5;ctx.stroke();
+      ctx.fillStyle=cols[ci];ctx.font='bold 11px Times New Roman';
+      ctx.fillText(c.id,w-16,h-20-(Math.max(20,90-10*c.rate*8)-20)/(70)*(h-40)+4);
+    });
+    ctx.strokeStyle='#ccc';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(20,10);ctx.lineTo(20,h-20);ctx.lineTo(w-10,h-20);ctx.stroke();
+  },
+  showResult(bestCup){
+    const correct=this.pick===bestCup.id;
+    if(correct){confetti(20);sndOk();}else sndBad();
+    const sci=document.getElementById('r3-sci');
+    sci.style.display='block';
+    sci.textContent=`🔬 Kết quả: Cốc ${bestCup.id} (${bestCup.mat}) giữ nhiệt lâu nhất!\n\nLý do: ${bestCup.id==='C'?'Xốp có hàng triệu bong bóng không khí li ti → cách nhiệt tốt nhất. Len (Cốc A) cũng tốt nhưng kém hơn xốp. Kim loại (Cốc B) dẫn nhiệt nhanh → nhiệt thoát nhanh. Cốc không bọc (Cốc D) mất nhiệt nhanh nhất.':''}`;
+    modal({
+      icon:correct?'🎉':'💡',
+      title:correct?`✅ Đúng! Cốc ${bestCup.id} giữ nhiệt nhất!`:`❌ Cốc ${bestCup.id} (${bestCup.mat}) mới giữ nhiệt nhất!`,
+      titleClass:correct?'ok':'bad',
+      msg:correct?'Tất cả đội dự đoán đúng! Giáo viên cộng điểm cho đội nào dự đoán đúng!':'Xem biểu đồ để hiểu tại sao! Giáo viên cộng điểm theo phán xét.',
+      sci:`🔬 Xốp (Cốc C) giữ nhiệt tốt nhất vì chứa nhiều bong bóng không khí → không khí là chất cách nhiệt tốt nhất. Len (Cốc A) cũng giữ nhiệt nhờ cấu trúc xốp. Kim loại dẫn nhiệt tốt → mất nhiệt nhanh nhất.`,
+      btns:[{text:'✅ Hoàn thành Vòng 3',cls:'btn btn-green',cb:()=>G.completeRound(2)}]
+    });
+    document.getElementById('r3-run-btn').textContent='✅ Đã chạy';
+  }
+};
+
+/* =====================================================
+   ROUND 4 — BLITZ TRUE/FALSE
+   ===================================================== */
+const R4={
+  qs:[],qi:0,combo:0,teamScores:[0,0,0,0],currentTeam:0,
+  init(){
+    G.showScreen('s-r4');
+    document.getElementById('h-round').textContent='⚡ Vòng 4: Thử Thách 60s!';
+    this.qs=shuffle([...BLITZ_QS]);this.qi=0;this.combo=0;
+    this.teamScores=[0,0,0,0];this.currentTeam=0;
+    document.getElementById('r4-combo-area').innerHTML='';
+    document.getElementById('r4-hint-area').innerHTML='';
+    document.getElementById('r4-score-live').textContent='';
+    timerStart(60,()=>this.end());
+    this.next();
+  },
+  next(){
+    if(this.qi>=this.qs.length){this.end();return;}
+    const q=this.qs[this.qi];
+    document.getElementById('r4-combo-area').innerHTML=this.combo>=2?`<div class="combo-badge">🔥 Chuỗi x${this.combo}!</div>`:'';
+    document.getElementById('r4-hint-area').innerHTML='';
+    document.getElementById('r4-q-area').innerHTML=`
+      <div class="blitz-card">
+        <div class="blitz-q">${q.illus?q.illus+' ':''}${q.q}</div>
+        <div class="blitz-row">
+          <div class="blitz-opt true-opt" onclick="R4.ans(this,true)" id="bopt-t">✅ ĐÚNG</div>
+          <div class="blitz-opt false-opt" onclick="R4.ans(this,false)" id="bopt-f">❌ SAI</div>
+        </div>
+      </div>`;
+  },
+  ans(el,val){
+    const q=this.qs[this.qi];
+    const correct=val===q.ans;
+    document.getElementById('bopt-t').onclick=null;
+    document.getElementById('bopt-f').onclick=null;
+    if(correct){
+      el.classList.add('flash-ok');this.combo++;sndOk();
+      document.getElementById('r4-combo-area').innerHTML=this.combo>=2?`<div class="combo-badge">🔥 Chuỗi x${this.combo}! Đúng!</div>`:'<div class="combo-badge" style="background:linear-gradient(135deg,#5dc85d,#2d8c2d);color:#fff">✅ Đúng!</div>';
+    }else{
+      el.classList.add('flash-bad');this.combo=0;sndBad();
+      document.getElementById('r4-hint-area').innerHTML=`<div class="hint-chip">💡 ${q.hint}<br><br>🔬 ${q.sci}</div>`;
+    }
+    setTimeout(()=>{this.qi++;this.next();},correct?700:1800);
+  },
+  end(){
+    timerStop();
+    modal({
+      icon:'⏰',title:`Vòng 4: ${this.qi} câu hoàn thành!`,titleClass:'ok',
+      msg:`Đã trả lời ${this.qi}/${BLITZ_QS.length} câu.\n\n👩‍🏫 Giáo viên xem kết quả và tự cộng điểm cho đội nào trả lời đúng nhiều nhất!`,
+      sci:'🔬 Bài học: Không khí = cách nhiệt tốt. Kim loại = dẫn nhiệt tốt. Áo len/xốp/bông → nhiều không khí → ấm. Nhiệt truyền từ nóng sang lạnh.',
+      btns:[{text:'✅ Hoàn thành Vòng 4',cls:'btn btn-green',cb:()=>G.completeRound(3)}]
+    });
+  }
+};
+
+/* =====================================================
+   ROUND 5 — BUZZER
+   ===================================================== */
+const R5={
+  qs:[],qi:0,buzzed:null,
+
+  init(){
+    G.showScreen('s-r5');
+    document.getElementById('h-round').textContent='🔔 Vòng 5: Đối Kháng Khoa Học!';
+    this.qs=shuffle([...R5_QS]);this.qi=0;
+    this.render();
+    this.nextQ();
+  },
+
+  render(){
+    const grid=document.getElementById('r5-buzzers');grid.innerHTML='';
+    const bgColors=['#5ba8e8','#ffb860','#5dc85d','#bb88ee'];
+    G.teams.forEach((t,i)=>{
+      const b=document.createElement('button');b.className='buzzer-btn';b.id='bz'+i;
+      b.style.background=bgColors[i];
+      b.innerHTML=`${t.avatar}<br><span style="font-size:.88rem">${t.name}</span>`;
+      b.onclick=()=>this.buzz(i);
+      grid.appendChild(b);
+    });
+  },
+
+  nextQ(){
+    if(this.qi>=this.qs.length){this.end();return;}
+    const q=this.qs[this.qi];
+    document.getElementById('r5-q').textContent=q.q;
+    document.getElementById('r5-panel').style.display='none';
+    this.buzzed=null;
+    document.querySelectorAll('.buzzer-btn').forEach(b=>{b.disabled=false;b.style.opacity='1';});
+    sndBuzz();
+  },
+
+  buzz(ti){
+    if(this.buzzed!==null)return;
+    this.buzzed=ti;
+    const t=G.teams[ti];
+    const q=this.qs[this.qi];
+    document.querySelectorAll('.buzzer-btn').forEach((b,i)=>{if(i!==ti){b.disabled=true;b.style.opacity='.45';}});
+    sndBuzz();
+    const panel=document.getElementById('r5-panel');panel.style.display='block';
+    document.getElementById('r5-bteam').textContent=`🔔 ${t.avatar} ${t.name} bấm chuông!`;
+    document.getElementById('r5-bhint').textContent=`💡 Gợi ý: ${q.hint}`;
+    document.getElementById('r5-bans').textContent='';
+    document.getElementById('r5-bjudge').innerHTML=`
+      <button class="btn btn-blue btn-sm" onclick="R5.showAns()">📖 Xem đáp án</button>
+      <button class="btn btn-green btn-sm" onclick="R5.judge(true)">✅ Trả lời đúng</button>
+      <button class="btn btn-red btn-sm" onclick="R5.judge(false)">❌ Trả lời sai</button>
+      <button class="btn btn-orange btn-sm" onclick="R5.skip()">⏭️ Bỏ qua</button>`;
+  },
+
+  showAns(){
+    const q=this.qs[this.qi];
+    document.getElementById('r5-bans').textContent=`📋 Đáp án: ${q.ans}`;
+  },
+
+  judge(correct){
+    if(correct){
+      confetti(12);sndOk();
+      modal({icon:'🎉',title:'✅ Trả lời đúng!',titleClass:'ok',
+        msg:`${G.teams[this.buzzed].avatar} ${G.teams[this.buzzed].name} trả lời đúng!\n👩‍🏫 Giáo viên tự bấm +điểm cho đội này ở bảng bên phải!`,
+        sci:`🔬 ${this.qs[this.qi].ans}`,
+        btns:[{text:'Câu tiếp →',cls:'btn btn-blue',cb:()=>{this.qi++;this.nextQ();}}]});
+    }else{
+      sndBad();
+      modal({icon:'💡',title:'❌ Trả lời sai!',titleClass:'bad',
+        msg:`${G.teams[this.buzzed].avatar} ${G.teams[this.buzzed].name} trả lời sai.\n👩‍🏫 Giáo viên quyết định có cho đội khác cướp câu không!`,
+        sci:`🔬 Đáp án đúng: ${this.qs[this.qi].ans}`,
+        btns:[
+          {text:'🔄 Cho cướp câu',cls:'btn btn-orange',cb:()=>{document.querySelectorAll('.buzzer-btn').forEach((b,i)=>{if(i!==this.buzzed){b.disabled=false;b.style.opacity='1';}});closeModal();}},
+          {text:'Câu tiếp →',cls:'btn btn-blue',cb:()=>{this.qi++;this.nextQ();}}
+        ]});
+    }
+  },
+
+  skip(){this.qi++;this.nextQ();},
+
+  end(){
+    G.roundsDone[4]=true;
+    modal({icon:'🔔',title:'Vòng Đối Kháng Xong!',titleClass:'ok',
+      msg:`Đã qua ${this.qi} câu hỏi!\n👩‍🏫 Giáo viên xem bảng điểm và cộng điểm thủ công cho các đội!`,
+      sci:'🔬 Giải thích bản chất dẫn nhiệt quan trọng hơn chỉ nhớ đáp án. Kim loại dẫn nhiệt tốt vì electron tự do. Không khí cách nhiệt tốt vì phân tử thưa.',
+      btns:[{text:'🗺️ Bản đồ',cls:'btn btn-blue',cb:()=>G.completeRound(4)}]});
+  }
+};
+
+/* =====================================================
+   ROUND 6 — GRAND FINAL
+   ===================================================== */
+const R6={
+  teamIdx:0,env:null,picks:{},
+
+  init(){
+    G.showScreen('s-r6');
+    document.getElementById('h-round').textContent='🏆 Vòng 6: Siêu Nhà Thiết Kế';
+    this.teamIdx=0;this.env=null;this.picks={};
+    this.renderTeamPhase();
+  },
+
+  renderTeamPhase(){
+    const t=G.teams[this.teamIdx]||G.teams[0];
+    document.getElementById('r6-sub').textContent=`Lượt của ${t.avatar} ${t.name} – Chọn môi trường thiết kế!`;
+    document.getElementById('r6-content').innerHTML=`
+      <div style="text-align:center;margin-bottom:14px">
+        <div style="font-size:3rem">${t.avatar}</div>
+        <div style="font-family:'Times New Roman',serif;font-size:1.1rem;font-weight:900;color:#cc6600">${t.name}</div>
+        <div style="font-size:.88rem;color:var(--muted);margin-top:4px;font-family:'Times New Roman',serif">Chọn môi trường thám hiểm:</div>
+      </div>
+      <div class="env-row">
+        ${ENVS_DATA.map(e=>`
+          <div class="env-card" style="background:${e.bg}" onclick="R6.pickEnv('${e.id}')">
+            <span class="env-big">${e.emoji}</span>
+            <div class="env-name">${e.n}</div>
+            <div class="env-temp">${e.temp}</div>
+          </div>`).join('')}
+      </div>`;
+  },
+
+  pickEnv(id){
+    this.env=ENVS_DATA.find(e=>e.id===id);
+    this.picks={outer:[],inner:[],leg:[],acc:[]};
+    sndPop();this.renderBuilder();
+  },
+
+  renderBuilder(){
+    const e=this.env,t=G.teams[this.teamIdx]||G.teams[0];
+    document.getElementById('r6-content').innerHTML=`
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;background:${e.bg};border-radius:12px;padding:10px 14px">
+        <div style="font-size:2.5rem">${e.emoji}</div>
+        <div>
+          <div style="font-family:'Times New Roman',serif;font-weight:900;color:#cc6600">${t.name} → ${e.n} (${e.temp})</div>
+          <div style="font-size:.82rem;color:var(--muted);font-family:'Times New Roman',serif">Chọn trang phục phù hợp với môi trường này!</div>
+        </div>
+      </div>
+      <div class="final-build-wrap">
+        ${Object.entries(ALL_CLOTHES).map(([cat,items])=>`
+          <div class="final-section">
+            <div class="final-sec-lbl">${{outer:'🧥 Áo ngoài',inner:'👕 Áo trong',leg:'👖 Quần',acc:'🎒 Phụ kiện'}[cat]}</div>
+            <div class="final-opts">
+              ${items.map(item=>`<div class="final-opt" data-c="${cat}" data-i="${item}" onclick="R6.toggle(this,'${cat}','${item}')">${item}</div>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-yellow" onclick="R6.showHint()">💡 Xem gợi ý</button>
+        <button class="btn btn-pink" onclick="R6.submit()">🏆 Nộp Thiết Kế</button>
+      </div>`;
+  },
+
+  toggle(el,cat,item){
+    el.classList.toggle('chosen');sndPop();
+    const idx=this.picks[cat].indexOf(item);
+    idx>-1?this.picks[cat].splice(idx,1):this.picks[cat].push(item);
+  },
+
+  showHint(){
+    const e=this.env;
+    modal({icon:'💡',title:`Gợi ý: ${e.n}`,titleClass:'hint-title',
+      msg:`Môi trường: ${e.temp}`,
+      hint:`💡 Nên chọn: ${Object.values(e.ideal).flat().join(', ')}\n\n❌ Tránh: ${e.avoid.join(', ')}`,
+      sci:e.sci,
+      btns:[{text:'✅ Đã hiểu!',cls:'btn btn-blue',cb:()=>{}}]});
+  },
+
+  submit(){
+    const e=this.env,t=G.teams[this.teamIdx]||G.teams[0];
+    const chosen=Object.entries(this.picks).flatMap(([cat,items])=>items.map(i=>({cat,item:i})));
+    let good=0,bad=0,comments=[];
+    chosen.forEach(({cat,item})=>{
+      if(e.ideal[cat]&&e.ideal[cat].includes(item)){good++;comments.push(`✅ "${item}" phù hợp!`);}
+      else if(e.avoid.includes(item)){bad++;comments.push(`❌ "${item}" không phù hợp với ${e.n}!`);}
+      else comments.push(`⚪ "${item}" tạm được.`);
+    });
+    if(chosen.length===0){alert('Hãy chọn ít nhất một món trang phục!');return;}
+    const stars=good>=4&&bad===0?'⭐⭐⭐':good>=2&&bad<=1?'⭐⭐':'⭐';
+    const ok=good>=3&&bad===0;
+    if(ok){confetti(20);sndOk();}else sndBad();
+    document.getElementById('r6-content').innerHTML=`
+      <div class="report-box">
+        <div class="report-title">📊 Báo cáo: ${t.avatar} ${t.name} → ${e.n}</div>
+        <div class="report-row"><span>Đánh giá tổng thể</span><span>${stars}</span></div>
+        <div class="report-row"><span>Phù hợp</span><span style="color:#2d8c2d;font-weight:900">${good} món tốt</span></div>
+        <div class="report-row"><span>Không phù hợp</span><span style="color:#c62828;font-weight:900">${bad} món không phù hợp</span></div>
+        <div class="teacher-note" style="margin:8px 0">👩‍🏫 Giáo viên tự quyết định cộng bao nhiêu điểm cho ${t.name} ở bảng bên phải!</div>
+        <div class="report-comment">${comments.slice(0,6).join('<br>')}<br><br>🔬 <strong>Khoa học:</strong> ${e.sci}</div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        ${this.teamIdx<G.teams.length-1?`<button class="btn btn-blue" onclick="R6.nextTeam()">Đội tiếp →</button>`:''}
+        <button class="btn btn-yellow" onclick="G.showResult()">🏆 Xem Kết Quả</button>
+        <button class="btn btn-green" onclick="G.completeRound(5)">✅ Hoàn thành</button>
+      </div>`;
+  },
+
+  nextTeam(){
+    this.teamIdx++;this.env=null;this.picks={};
+    this.renderTeamPhase();
+  }
+};
+
+/* ===== LOADING ===== */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    const l=document.getElementById('loading');
+    l.style.opacity='0';setTimeout(()=>{l.style.display='none';},600);
+  },2000);
+});
+</script>
+</body>
+</html>
+ENDOFFILE
+echo "Done: $(wc -c < /mnt/user-data/outputs/gamedannhiet_lop4_v2.html) bytes"
+Ra
+
+Command argument is 116_227 bytes, exceeding the 100_000-byte per-argument limit. For large content, pipe via stdin or use a file-write API instead of embedding the content inline in the command. Argument preview: 'cat > /mnt/user-data/outputs/gamedannhiet_lop4_v2.html << \'ENDOFFILE\'\n<!DOCTYPE html>\n<html lang="vi">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width,initial-scale=1.0'
+Hoàn thành
+
+Bạn sẽ không còn tin nhắn miễn phí nào nữa cho đến 21:50.
+Nhận thêm
+
+
+
+
+Claude là một trí tuệ nhân tạo và có thể mắc lỗi. Vui lòng kiểm tra lại câu trả lời.
